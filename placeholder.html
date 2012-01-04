@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulare - Platzhalter</title>
+    <script src="libs/jquery-1.6.2.js" charset="utf-8"></script>
+    <script src="libs/modernizr-2.0.6.min.js" charset="utf-8"></script>
+    
+</head>
+<body>
+    <form>
+        <label for="firstname">Firstname:</label>
+        <input placeholder="Your Firstname" type="text" name="firstname" id="firstname">
+        <br>
+        <label for="lastname">Lastname:</label>
+        <input placeholder="Your Lastname" type="text" name="lastname" id="lastname">
+        <br>
+        <label for="street">Street:</label>
+        <input placeholder="Your street and quite some extra text so it doesn't fit inside of the field" type="text" name="street" id="street">
+        <br>
+        <label for="message">Message:</label>
+        <textarea placeholder="Your Message to me" name="message" id="message" rows="4"></textarea>
+        <input type="submit" value="send">
+    </form>
+    <script type="text/javascript" charset="utf-8">
+        Modernizr.load({
+            test: Modernizr.input.placeholder,
+            nope: [
+                    'libs/onfontresize.jquery.js',
+                    'placeholder_polyfill.css',
+                    'placeholder_polyfill.jquery.js'
+                  ]
+        });
+    </script>
+</body>
+</html>
