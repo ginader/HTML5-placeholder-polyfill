@@ -17,7 +17,7 @@
 */
 
 (function($) {
-    var debug = true;
+    var debug = false;
     function showIfEmpty(input) {
         if( $.trim(input.val()) === '' ){
             input.data('placeholder').show();

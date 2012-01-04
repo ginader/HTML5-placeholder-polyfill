@@ -1,7 +1,7 @@
 HTML5 placeholder Polyfill
 ===========================
 
-Lightweight and very robust little jQuery Plugin that generates the look and feel of the HTML5 placeholder attribut for Browsers without native support.
+Lightweight and very robust little jQuery Plugin that generates the look and feel of the HTML5 placeholder attribut for Browsers without native support. It also adds an extra title in case the placeholder text is too long to be displayed.  Thanks to Modernizr/yepnope nothing get loaded when the Browser natively supports the placeholder.
 
 requires:
 
