@@ -10,10 +10,11 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.0
+* Version: 1.1
 * 
 * History:
 * * 1.0 initial release
+* * 1.1 added support for multiline placeholders in textareas
 */
 
 (function($) {
@@ -26,14 +27,15 @@
         }
     }
     function position(placeholder,input){
-        var pos = input.position();
+        var pos = input.position(),
+            ta = input.is('textarea');
         placeholder.css({
             left : pos.left,
             top : pos.top,
-            width : input.innerWidth()-4,
-            height : input.innerHeight(),
+            width : input.innerWidth()-(ta ? 20 : 4),
+            height : input.innerHeight()-6,
             lineHeight : input.css('line-height'),
-            whiteSpace : 'nowrap',
+            whiteSpace : ta ? 'normal' : 'nowrap',
             overflow : 'hidden'
         });
     }
