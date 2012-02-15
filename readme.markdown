@@ -13,3 +13,13 @@ optional but recommended:
 * [fontresize](http://www.tomdeater.com/jquery/onfontresize/) (excellent even though terribly unmaintained event plugin that fires when a user changes the fontsize of their Browser (that usually breaks the other placeholder polyfills))
 
 [check out the DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/)
+
+The Placeholder Attribute has decent support across current Browsers. This Script adds support for the older generations including:
+
+* Internet Explorer < 10
+* Firefox < 4.0
+* Safari < 4.0
+* iOS Safari < 4.0
+* Android Safari
+
+for more details on native support see the Browser suppport table at [caniuse.com](http://caniuse.com/#search=placeholder)

@@ -10,20 +10,22 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.1
+* Version: 1.3
 * 
 * History:
 * * 1.0 initial release
 * * 1.1 added support for multiline placeholders in textareas
+* * 1.2 Allow label to wrap the input element by noah https://github.com/ginader/HTML5-placeholder-polyfill/pull/1
+* * 1.3 New option to read placeholder to Screenreaders. Turned on by default
 */
 
 (function($) {
     var debug = false;
-    function showIfEmpty(input) {
+    function showIfEmpty(input,options) {
         if( $.trim(input.val()) === '' ){
-            input.data('placeholder').show();
+            input.data('placeholder').removeClass(options.hideClass);
         }else{
-            input.data('placeholder').hide();
+            input.data('placeholder').addClass(options.hideClass);
         }
     }
     function position(placeholder,input){
@@ -47,8 +49,13 @@
     $.fn.placeHolder = function(config) {
         var o = this;
         this.options = $.extend({
-            className: 'placeholder'
+            className: 'placeholder',
+            visibleToScreenreaders : true,
+            visibleToScreenreadersHideClass : 'placeholder-hide-exept-screenreader',
+            visibleToNoneHideClass : 'placeholder-hide'
+
         }, config);
+        this.options.hideClass = this.options.visibleToScreenreaders ? this.options.visibleToScreenreadersHideClass : this.options.visibleToNoneHideClass;
         return $(this).each(function() {
             var input = $(this),
                 text = input.attr('placeholder'),
@@ -76,12 +83,12 @@
                 $(this).data('input').focus();
             });
             input.focusin(function() {
-                $(this).data('placeholder').hide();
+                $(this).data('placeholder').addClass(o.options.hideClass);
             });
             input.focusout(function(){
-                showIfEmpty($(this));
+                showIfEmpty($(this),o.options);
             });
-            showIfEmpty(input);
+            showIfEmpty(input,o.options);
             // optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
             $(document).bind("fontresize", function(){
                 position(placeholder,input);
@@ -89,6 +96,8 @@
         });
     };
     $(function(){
-        $('input[placeholder], textarea[placeholder]').placeHolder();
+        $('input[placeholder], textarea[placeholder]').placeHolder({
+            visibleToScreenreaders : true
+        });
     });
 })(jQuery);
