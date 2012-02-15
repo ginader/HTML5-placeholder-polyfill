@@ -54,11 +54,12 @@
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
                 label,placeholder,titleNeeded;
-            if(!id){
+            label = input.closest('label')[0];
+            if(!label && !id){
                 log('the input element with the placeholder needs an id!');
                 return;
             }
-            label = $('label[for="'+id+'"]');
+            label = label || $('label[for="'+id+'"]');
             if(!label){
                 log('the input element with the placeholder needs a label!');
                 return;
