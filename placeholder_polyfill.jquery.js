@@ -1,6 +1,6 @@
 /**
 * HTML5 placeholder polyfill
-* @requires jQuery - tested with 1.4.2 but might as well work with older versions
+* @requires jQuery - tested with 1.6.2 but might as well work with older versions
 * 
 * code: https://github.com/ginader/HTML5-placeholder-polyfill
 * please report issues at: https://github.com/ginader/HTML5-placeholder-polyfill/issues
