@@ -29,17 +29,14 @@
         }
     }
     function position(placeholder,input){
-        var pos = input.position(),
-            ta = input.is('textarea');
+        var ta  = input.is('textarea');
         placeholder.css({
-            left : pos.left,
-            top : pos.top,
             width : input.innerWidth()-(ta ? 20 : 4),
             height : input.innerHeight()-6,
             lineHeight : input.css('line-height'),
             whiteSpace : ta ? 'normal' : 'nowrap',
             overflow : 'hidden'
-        });
+        }).offset(input.offset());
     }
     function log(msg){
         if(debug && window.console && window.console.log){

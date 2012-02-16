@@ -6,8 +6,12 @@
         body{
             font-family:sans-serif;
         }
+        .offscreen {
+            left: -999px;
+            position: absolute;
+        }
     </style>
-    <script src="libs/jquery-1.6.2.js" charset="utf-8"></script>
+    <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
     <script src="libs/modernizr-2.0.6.min.js" charset="utf-8"></script>
 </head>
 <body>
@@ -42,6 +46,14 @@
     </form>
 
 
+    <h2>Form Element with visually hidden label (i.e. for search boxes)</h2>
+    <form>
+        <label class="offscreen" for="search">Search:</label>
+        <input placeholder="e.g. Yourself..." type="text" name="search" id="search">
+        <input type="submit" value="search">
+    </form>
+
+
     <h2>Form Elements with implicit labels (wrapping the form element into the label)</h2>
     <form>
         <label>Firstname:
@@ -71,7 +83,7 @@
         Modernizr.load({
             test: Modernizr.input.placeholder,
             nope: [
-                    'libs/onfontresize.jquery.js',
+                    'libs/onfontresize.jquery.min.js',
                     'placeholder_polyfill.css',
                     'placeholder_polyfill.jquery.js'
                   ]
