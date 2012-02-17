@@ -10,13 +10,14 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.3
+* Version: 1.4
 * 
 * History:
 * * 1.0 initial release
 * * 1.1 added support for multiline placeholders in textareas
 * * 1.2 Allow label to wrap the input element by noah https://github.com/ginader/HTML5-placeholder-polyfill/pull/1
 * * 1.3 New option to read placeholder to Screenreaders. Turned on by default
+* * 1.4 made placeholder more rubust to allow labels being offscreen + added minified version of the 3rd party libs
 */
 
 (function($) {

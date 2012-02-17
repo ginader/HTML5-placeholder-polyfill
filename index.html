@@ -3,12 +3,32 @@
 <head>
     <title>HTML5-placeholder-polyfill</title>
     <style type="text/css">
+        /* DEMO styles. Not needed for the functionality! */
         body{
             font-family:sans-serif;
         }
         .offscreen {
             left: -999px;
             position: absolute;
+        }
+        label{
+            display:inline-block;
+            min-width:80px;
+            -width:80px;
+        }
+        input,textarea{
+            width:150px;
+        }
+        input[type=submit]{
+            width:auto;
+        }
+        .implicit label{
+            min-width:240px;
+            -width:240px;
+        }
+        .implicit label input,
+        .implicit label textarea{
+            float:right;
         }
     </style>
     <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
@@ -42,6 +62,7 @@
         <br>
         <label for="message">Message:</label>
         <textarea placeholder="e.g. Your Message to me and quite some extra text so it doesn't fit in one row" name="message" id="message" rows="2"></textarea>
+        <br>
         <input type="submit" value="send">
     </form>
 
@@ -55,7 +76,7 @@
 
 
     <h2>Form Elements with implicit labels (wrapping the form element into the label)</h2>
-    <form>
+    <form class="implicit">
         <label>Firstname:
             <input placeholder="e.g. Your Firstname" type="text" name="firstname">
         </label>
@@ -75,6 +96,7 @@
         <label>Message:
             <textarea placeholder="e.g. Your Message to me and quite some extra text so it doesn't fit in one row" name="message" rows="2"></textarea>
         </label>
+        <br>
         <input type="submit" value="send">
     </form>
 
