@@ -107,15 +107,28 @@
 <!-- this is where the Magic happens — we feature test for placeholder support and load the polyfill if needed -->
 
     <script type="text/javascript" charset="utf-8">
+    // remove/add first slash in the following line to toggle the production and the dev block
+    //*
+        // production ready initialization
+        Modernizr.load({
+            test: Modernizr.input.placeholder,
+            nope: [
+                    'placeholder_polyfill.min.css',
+                    'placeholder_polyfill.jquery.min.combo.js'
+                  ]
+        });
+    /*/
+        // development initialization (not minified or combined)
         Modernizr.load({
             test: Modernizr.input.placeholder,
             nope: [
                     'libs/onfontresize.jquery.min.js', // optional
                     'libs/jquery.ba-resize.min.js', // optional
-                    'placeholder_polyfill.css',
-                    'placeholder_polyfill.jquery.js'
+                    'placeholder_polyfill.min.css',
+                    'placeholder_polyfill.jquery.js', // this and the css above are the only required files
                   ]
         });
+    //*/
     </script>
 
 <!-- ignore from here on -->
