@@ -1,5 +1,5 @@
-HTML5 placeholder Polyfill V 1.3
-================================
+HTML5 placeholder Polyfill
+==========================
 
 Lightweight and very robust little jQuery Plugin that generates the look and feel of the HTML5 placeholder attribut for Browsers without native support. It also adds an extra title in case the placeholder text is too long to be displayed. 
 The polyfill comes with an option to define if the placeholder text should be read to screenreaders or not (on by default).
@@ -16,7 +16,11 @@ Requires:
 
 optional but recommended:
 
-* [fontresize](http://www.tomdeater.com/jquery/onfontresize/) (excellent even though terribly unmaintained event plugin that fires when a user changes the fontsize of their Browser (that usually breaks the other placeholder polyfills))
+* [fontresize](https://github.com/johnantoni/jquery.onfontresize) (excellent even though terribly unmaintained event plugin that fires when a user changes the fontsize of their Browser (that usually breaks the other placeholder polyfills))
+
+highly optional (only needed if you want users to be able to resize textareas):
+
+* [jquery-resize](https://github.com/cowboy/jquery-resize) if included a repositioning is triggered when a user resizes a textarea. If not I disable the resizing of textareas to avoid rendering problems
 
 The Placeholder Attribute has decent support across current Browsers. This Script adds support for the older generations including:
 
@@ -37,6 +41,7 @@ USAGE:
 	    test: Modernizr.input.placeholder,
 	    nope: [
 	            'libs/onfontresize.jquery.js',
+	            'libs/jquery.ba-resize.min.js',
 	            'placeholder_polyfill.css',
 	            'placeholder_polyfill.jquery.js'
 	          ]
@@ -48,6 +53,7 @@ USAGE:
 	    test: ('placeholder' in $('<input>')[0]),
 	    nope: [
 	            'libs/onfontresize.jquery.js',
+	            'libs/jquery.ba-resize.min.js',
 	            'placeholder_polyfill.css',
 	            'placeholder_polyfill.jquery.js'
 	          ]

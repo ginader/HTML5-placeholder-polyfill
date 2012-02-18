@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.5
+* Version: 1.6
 * 
 * History:
 * * 1.0 initial release
@@ -19,6 +19,7 @@
 * * 1.3 New option to read placeholder to Screenreaders. Turned on by default
 * * 1.4 made placeholder more rubust to allow labels being offscreen + added minified version of the 3rd party libs
 * * 1.5 emptying the native placeholder to prevent double rendering in Browsers with partial support
+* * 1.6 optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
 */
 
 (function($) {
@@ -89,15 +90,26 @@
                 showIfEmpty($(this),o.options);
             });
             showIfEmpty(input,o.options);
+
             // optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
             $(document).bind("fontresize", function(){
                 position(placeholder,input);
             });
+
+            // optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
+            if($.event.special.resize){
+                $("textarea").bind("resize", function(e){
+                    position(placeholder,input);
+                });
+            }else{
+                // we simply disable the resizeablilty of textareas when we can't react on them resizing
+                $("textarea").css('resize','none');
+            }
         });
     };
     $(function(){
         $('input[placeholder], textarea[placeholder]').placeHolder({
-            visibleToScreenreaders : true
+            visibleToScreenreaders : true // set to false if the content of the placeholder is useless or doubling the content of the label
         });
     });
 })(jQuery);
