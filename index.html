@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>HTML5-placeholder-polyfill</title>
+
+<!-- DEMO styles. Not needed for the functionality! -->
     <style type="text/css">
-        /* DEMO styles. Not needed for the functionality! */
         body{
             font-family:sans-serif;
         }
@@ -31,8 +32,11 @@
             float:right;
         }
     </style>
+
+<!-- include the default Javascript (jQuery and Modernizr) -->
     <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
     <script src="libs/modernizr-2.0.6.min.js" charset="utf-8"></script>
+
 </head>
 <body>
     <h1>HTML5 Placeholder Polyfill Examples</h1>
@@ -100,28 +104,33 @@
         <input type="submit" value="send">
     </form>
 
+<!-- this is where the Magic happens — we feature test for placeholder support and load the polyfill if needed -->
 
     <script type="text/javascript" charset="utf-8">
         Modernizr.load({
             test: Modernizr.input.placeholder,
             nope: [
-                    'libs/onfontresize.jquery.min.js',
+                    'libs/onfontresize.jquery.min.js', // optional
+                    'libs/jquery.ba-resize.min.js', // optional
                     'placeholder_polyfill.css',
                     'placeholder_polyfill.jquery.js'
                   ]
         });
     </script>
 
-<a href="https://github.com/ginader/HTML5-placeholder-polyfill"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
+<!-- ignore from here on -->
 
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-299719-2");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
+    <a href="https://github.com/ginader/HTML5-placeholder-polyfill"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-299719-2");
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    </script>
+
 </body>
 </html>
