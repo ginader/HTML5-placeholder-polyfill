@@ -1,0 +1,26 @@
+body{
+    font-family:sans-serif;
+}
+.offscreen {
+    left: -999px;
+    position: absolute;
+}
+label{
+    display:inline-block;
+    min-width:80px;
+    -width:80px;
+}
+input,textarea{
+    width:150px;
+}
+input[type=submit]{
+    width:auto;
+}
+.implicit label{
+    min-width:240px;
+    -width:240px;
+}
+.implicit label input,
+.implicit label textarea{
+    float:right;
+}
