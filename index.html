@@ -6,8 +6,10 @@
 <!-- DEMO styles. Only needed for this Example. Not pretty... -->
     <link rel="stylesheet" href="demo.css">
 
-<!-- include the default Javascript (jQuery and Modernizr) -->
-    <script src="libs/modernizr-2.0.6.min.js" charset="utf-8"></script>
+<!-- include the default CSS -->
+    <link rel="stylesheet" href="placeholder_polyfill.css">
+    
+<!-- include the default Javascript (jQuery) -->
     <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
 
 </head>
@@ -77,32 +79,9 @@
         <input type="submit" value="send">
     </form>
 
-<!-- this is where the Magic happens — we feature test for placeholder support and load the polyfill if needed -->
+<!-- this is where the Magic happens — simply include the polyfill and it will only execute if needed -->
+    <script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
 
-    <script type="text/javascript" charset="utf-8">
-    // remove/add the second slash in the following line to toggle between production and dev block
-    //*
-        // production ready initialization
-        Modernizr.load({
-            test: Modernizr.input.placeholder,
-            nope: [
-                    'placeholder_polyfill.min.css',
-                    'placeholder_polyfill.jquery.min.combo.js'
-                  ]
-        });
-    /*/
-        // development initialization (not minified or combined)
-        Modernizr.load({
-            test: Modernizr.input.placeholder,
-            nope: [
-                    'libs/onfontresize.jquery.min.js', // optional
-                    'libs/jquery.ba-resize.min.js', // optional
-                    'placeholder_polyfill.css',
-                    'placeholder_polyfill.jquery.js', // this and the css above are the only required files
-                  ]
-        });
-    //*/
-    </script>
 
 <!-- ignore from here on -->
 
