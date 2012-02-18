@@ -35,7 +35,14 @@ for more details on native support see the Browser suppport table at [caniuse.co
 USAGE:
 ------
 
-### using [Modernizr](http://www.modernizr.com/)
+### Simply include the Javascript and CSS. The Polyfill will only run when needed
+
+	<head>
+		<link rel="stylesheet" href="placeholder_polyfill.css">
+		<script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
+	</head>
+
+### using [Modernizr](http://www.modernizr.com/) modern Browser don't even have to load the Polyfill at all
 
 	Modernizr.load({
 	    test: Modernizr.input.placeholder,
@@ -45,7 +52,7 @@ USAGE:
 	          ]
 	});
 
-### using [yepnope.js](http://yepnopejs.com/) (used as load() in Modernizr) the same but with manual feature detection
+### using [yepnope.js](http://yepnopejs.com/) (used as load() in Modernizr) the same as with Modernizr but with manual feature detection
 
 	yepnope({
 	    test: ('placeholder' in $('<input>')[0]),

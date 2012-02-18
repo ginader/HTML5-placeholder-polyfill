@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.6
+* Version: 1.7
 * 
 * History:
 * * 1.0 initial release
@@ -20,6 +20,7 @@
 * * 1.4 made placeholder more rubust to allow labels being offscreen + added minified version of the 3rd party libs
 * * 1.5 emptying the native placeholder to prevent double rendering in Browsers with partial support
 * * 1.6 optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
+* * 1.7 feature detection is now included in the polyfill so you can simply include it without the need for Modernizr
 */
 
 (function($) {
@@ -108,6 +109,9 @@
         });
     };
     $(function(){
+        if('placeholder' in $('<input>')[0]){ // don't run the polyfill when the browser has native support
+            return;
+        }
         $('input[placeholder], textarea[placeholder]').placeHolder({
             visibleToScreenreaders : true // set to false if the content of the placeholder is useless or doubling the content of the label
         });
