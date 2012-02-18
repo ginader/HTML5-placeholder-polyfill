@@ -38,8 +38,8 @@ USAGE:
 ### Simply include the Javascript and CSS. The Polyfill will only run when needed
 
 	<head>
-		<link rel="stylesheet" href="placeholder_polyfill.css">
-		<script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="placeholder_polyfill.min.css">
+		<script src="placeholder_polyfill.jquery.min.combo.js" charset="utf-8"></script>
 	</head>
 
 ### using [Modernizr](http://www.modernizr.com/) modern Browser don't even have to load the Polyfill at all
