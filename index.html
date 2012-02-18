@@ -3,39 +3,12 @@
 <head>
     <title>HTML5-placeholder-polyfill</title>
 
-<!-- DEMO styles. Not needed for the functionality! -->
-    <style type="text/css">
-        body{
-            font-family:sans-serif;
-        }
-        .offscreen {
-            left: -999px;
-            position: absolute;
-        }
-        label{
-            display:inline-block;
-            min-width:80px;
-            -width:80px;
-        }
-        input,textarea{
-            width:150px;
-        }
-        input[type=submit]{
-            width:auto;
-        }
-        .implicit label{
-            min-width:240px;
-            -width:240px;
-        }
-        .implicit label input,
-        .implicit label textarea{
-            float:right;
-        }
-    </style>
+<!-- DEMO styles. Only needed for this Example. Not pretty... -->
+    <link rel="stylesheet" href="demo.css">
 
 <!-- include the default Javascript (jQuery and Modernizr) -->
-    <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
     <script src="libs/modernizr-2.0.6.min.js" charset="utf-8"></script>
+    <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -107,7 +80,7 @@
 <!-- this is where the Magic happens — we feature test for placeholder support and load the polyfill if needed -->
 
     <script type="text/javascript" charset="utf-8">
-    // remove/add first slash in the following line to toggle the production and the dev block
+    // remove/add the second slash in the following line to toggle between production and dev block
     //*
         // production ready initialization
         Modernizr.load({
@@ -124,7 +97,7 @@
             nope: [
                     'libs/onfontresize.jquery.min.js', // optional
                     'libs/jquery.ba-resize.min.js', // optional
-                    'placeholder_polyfill.min.css',
+                    'placeholder_polyfill.css',
                     'placeholder_polyfill.jquery.js', // this and the css above are the only required files
                   ]
         });
