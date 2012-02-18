@@ -5,6 +5,7 @@ Lightweight and very robust little jQuery Plugin that generates the look and fee
 The polyfill comes with an option to define if the placeholder text should be read to screenreaders or not (on by default).
 
 __[check out the DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/)__
+__[check out the DEMO using Modernizr to load the Polyfill](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/index-modernizr.html)__
 
 Thanks to Modernizr/yepnope nothing get loaded when the Browser natively supports the placeholder.
 
