@@ -40,10 +40,8 @@ USAGE:
 	Modernizr.load({
 	    test: Modernizr.input.placeholder,
 	    nope: [
-	            'libs/onfontresize.jquery.js',
-	            'libs/jquery.ba-resize.min.js',
-	            'placeholder_polyfill.css',
-	            'placeholder_polyfill.jquery.js'
+				'placeholder_polyfill.min.css',
+				'placeholder_polyfill.jquery.min.combo.js'
 	          ]
 	});
 
@@ -52,9 +50,7 @@ USAGE:
 	yepnope({
 	    test: ('placeholder' in $('<input>')[0]),
 	    nope: [
-	            'libs/onfontresize.jquery.js',
-	            'libs/jquery.ba-resize.min.js',
-	            'placeholder_polyfill.css',
-	            'placeholder_polyfill.jquery.js'
+                'placeholder_polyfill.min.css',
+                'placeholder_polyfill.jquery.min.combo.js'
 	          ]
 	});
