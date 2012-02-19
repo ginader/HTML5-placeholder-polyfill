@@ -47,6 +47,15 @@
 
 
     <h2>Form Element with visually hidden label (i.e. for search boxes)</h2>
+    <h3>Using the "visuallyhidden" class from i.e. HTML5 Boilerplate</h3>
+    <p><strong>Known issue:</strong> the CSS is using a technique to hide the content that is making it virtually impossible to make something visible inside of it. So this fails to render the placeholder :-(</p>
+    <form>
+        <label class="visuallyhidden" for="search2">Search:</label>
+        <input placeholder="e.g. Yourself..." type="text" name="search" id="search2">
+        <input type="submit" value="search">
+    </form>
+
+    <h3>Using the oldschool "offscreen" class (pushing the element to the far left using position:absolute)</h3>
     <form>
         <label class="offscreen" for="search">Search:</label>
         <input placeholder="e.g. Yourself..." type="text" name="search" id="search">
@@ -80,9 +89,9 @@
     </form>
 
 <!-- optional but recommend - repositions the placeholders when a user resizes their font size -->
-    <script src="lib/onfontresize.jquery.min.js" charset="utf-8"></script>
+    <script src="libs/onfontresize.jquery.min.js" charset="utf-8"></script>
 <!-- highly optional - repositions the placeholders when a user resizes a textarea. If not used then textarea resizing will simply be disabled -->
-    <script src="lib/jquery.ba-resize.min.js" charset="utf-8"></script>
+    <script src="libs/jquery.ba-resize.min.js" charset="utf-8"></script>
 <!-- this is where the Magic happens — simply include the polyfill and it will only execute if needed -->
     <script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
 
