@@ -2,7 +2,7 @@ body{
     font-family:sans-serif;
 }
 .offscreen {
-    left: -999px;
+    left: -999em;
     position: absolute;
 }
 label{
