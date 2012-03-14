@@ -93,6 +93,8 @@
     <script src="libs/onfontresize.jquery.min.js" charset="utf-8"></script>
 <!-- highly optional - repositions the placeholders when a user resizes a textarea. If not used then textarea resizing will simply be disabled -->
     <script src="libs/jquery.ba-resize.min.js" charset="utf-8"></script>
+<!-- required if hideOnFocus is set to false to be able to efficiently poll for input text changes -->
+    <script src="libs/rAF.js" charset="utf-8"></script>
 <!-- this is where the Magic happens — simply include the polyfill and it will only execute if needed -->
     <script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
 

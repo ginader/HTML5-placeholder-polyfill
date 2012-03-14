@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.8.1
+* Version: 1.9
 * 
 * History:
 * * 1.0 initial release
@@ -23,18 +23,23 @@
 * * 1.7 feature detection is now included in the polyfill so you can simply include it without the need for Modernizr
 * * 1.8 replacing the HTML5 Boilerplate .visuallyhidden technique with one that still allows the placeholder to be rendered
 * * 1.8.1 bugfix for implicit labels
+* * 1.9 New option "hideOnFocus" which, if set to false will mimic the behavior of mobile safari and chrome (remove label when typed instead of onfocus)
 */
 
 (function($) {
-    var debug = false;
-    function showIfEmpty(input,options) {
+    var debug = false,
+        animId;
+    function showPlaceholderIfEmpty(input,options) {
         if( $.trim(input.val()) === '' ){
             input.data('placeholder').removeClass(options.hideClass);
         }else{
             input.data('placeholder').addClass(options.hideClass);
         }
     }
-    function position(placeholder,input){
+    function hidePlaceholder(input,options){
+        input.data('placeholder').addClass(options.hideClass);
+    }
+    function positionPlaceholder(placeholder,input){
         var ta  = input.is('textarea');
         placeholder.css({
             width : input.innerWidth()-(ta ? 20 : 4),
@@ -43,6 +48,29 @@
             whiteSpace : ta ? 'normal' : 'nowrap',
             overflow : 'hidden'
         }).offset(input.offset());
+    }
+    function startFilledCheckChange(input,options){
+        var input = input,
+            val = input.val();
+        (function checkloop(){
+            animId = requestAnimationFrame(checkloop);
+            if(input.val() != val){
+                hidePlaceholder(input,options);
+                stopCheckChange();
+                startEmptiedCheckChange(input,options);
+            }
+        })();
+    }
+    function startEmptiedCheckChange(input,options){
+        var input = input,
+            val = input.val();
+        (function checkloop(){
+            animId = requestAnimationFrame(checkloop);
+            showPlaceholderIfEmpty(input,options);
+        })();
+    }
+    function stopCheckChange(){
+        cancelAnimationFrame(animId);
     }
     function log(msg){
         if(debug && window.console && window.console.log){
@@ -55,8 +83,8 @@
             className: 'placeholder',
             visibleToScreenreaders : true,
             visibleToScreenreadersHideClass : 'placeholder-hide-exept-screenreader',
-            visibleToNoneHideClass : 'placeholder-hide'
-
+            visibleToNoneHideClass : 'placeholder-hide',
+            hideOnFocus : true
         }, config);
         this.options.hideClass = this.options.visibleToScreenreaders ? this.options.visibleToScreenreadersHideClass : this.options.visibleToNoneHideClass;
         return $(this).each(function() {
@@ -83,29 +111,34 @@
             if(titleNeeded){
                 placeholder.attr('title',text);
             }
-            position(placeholder,input);
+            positionPlaceholder(placeholder,input);
             input.data('placeholder',placeholder);
             placeholder.data('input',placeholder);
             placeholder.click(function(){
                 $(this).data('input').focus();
             });
             input.focusin(function() {
-                $(this).data('placeholder').addClass(o.options.hideClass);
+                if(!o.options.hideOnFocus){
+                    startFilledCheckChange(input,o.options);
+                }else{
+                    hidePlaceholder(input,o.options);
+                }
             });
             input.focusout(function(){
-                showIfEmpty($(this),o.options);
+                stopCheckChange();
+                showPlaceholderIfEmpty($(this),o.options);
             });
-            showIfEmpty(input,o.options);
+            showPlaceholderIfEmpty(input,o.options);
 
             // optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
             $(document).bind("fontresize", function(){
-                position(placeholder,input);
+                positionPlaceholder(placeholder,input);
             });
 
             // optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
             if($.event.special.resize){
                 $("textarea").bind("resize", function(e){
-                    position(placeholder,input);
+                    positionPlaceholder(placeholder,input);
                 });
             }else{
                 // we simply disable the resizeablilty of textareas when we can't react on them resizing
@@ -118,7 +151,8 @@
             return;
         }
         $('input[placeholder], textarea[placeholder]').placeHolder({
-            visibleToScreenreaders : true // set to false if the content of the placeholder is useless or doubling the content of the label
+            visibleToScreenreaders : true, // set to false if the content of the placeholder is useless or doubling the content of the label
+            hideOnFocus : false // set to false if you want to mimic the behavior of mobile safari and chrome (remove label when typeed instead of onfocus)
         });
     });
 })(jQuery);
