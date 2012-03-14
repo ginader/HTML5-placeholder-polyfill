@@ -74,7 +74,9 @@
                 log('the input element with the placeholder needs a label!');
                 return;
             }
-            label.removeClass('visuallyhidden').addClass('visuallyhidden-with-placeholder');
+            if($(label).hasClass('visuallyhidden')){
+                $(label).removeClass('visuallyhidden').addClass('visuallyhidden-with-placeholder');
+            }
             placeholder = $('<span class="'+o.options.className+'">'+text+'</span>').appendTo(label);
             titleNeeded = (placeholder.width() > input.width());
             if(titleNeeded){
