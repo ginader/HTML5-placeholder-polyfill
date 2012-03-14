@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.8
+* Version: 1.8.1
 * 
 * History:
 * * 1.0 initial release
@@ -22,6 +22,7 @@
 * * 1.6 optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
 * * 1.7 feature detection is now included in the polyfill so you can simply include it without the need for Modernizr
 * * 1.8 replacing the HTML5 Boilerplate .visuallyhidden technique with one that still allows the placeholder to be rendered
+* * 1.8.1 bugfix for implicit labels
 */
 
 (function($) {
