@@ -2,9 +2,14 @@ HTML5 placeholder Polyfill
 ==========================
 
 Lightweight and very robust little jQuery Plugin that generates the look and feel of the HTML5 placeholder attribut for Browsers without native support. It also adds an extra title in case the placeholder text is too long to be displayed. 
-The polyfill comes with an option to define if the placeholder text should be read to screenreaders or not (on by default).
+The polyfill comes with an option to define if the placeholder text should be read to screenreaders or not (on by default). New in Version 1.9 is the option to make it behave like Chrome or mobile Safari (hide Placeholder when the users enters content rather than when the fields receives focus).
+
+Demos:
+------
+__to see the actual work of this Polyfill use an old Browser like Firefox 3.6!__
 
 * __[check out the DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/)__
+* __[check out the Chrome style DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/index-chromeish.html)__
 * __[check out the DEMO using Modernizr to load the Polyfill](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/index-modernizr.html)__ (Thanks to Modernizr/yepnope nothing needs to get loaded when the Browser natively supports the placeholder)
 
 
@@ -21,6 +26,10 @@ optional but recommended:
 highly optional (only needed if you want users to be able to resize textareas):
 
 * [jquery-resize](https://github.com/cowboy/jquery-resize) if included a repositioning is triggered when a user resizes a textarea. If not I disable the resizing of textareas to avoid rendering problems
+
+required only if hiding placeholder when user types instead of onfocus like Chrome or mobile Safari
+
+* [requestAnimationFrame polyfill](https://gist.github.com/1579671) better than a simple timeout loop as browsers can slow the loop down when it's not the active window
 
 The Placeholder Attribute has decent support across current Browsers. This Script adds support for the older generations including:
 

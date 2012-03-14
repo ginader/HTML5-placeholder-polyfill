@@ -118,15 +118,17 @@
                 $(this).data('input').focus();
             });
             input.focusin(function() {
-                if(!o.options.hideOnFocus){
+                if(!o.options.hideOnFocus && window.requestAnimationFrame){
                     startFilledCheckChange(input,o.options);
                 }else{
                     hidePlaceholder(input,o.options);
                 }
             });
             input.focusout(function(){
-                stopCheckChange();
                 showPlaceholderIfEmpty($(this),o.options);
+                if(!o.options.hideOnFocus && window.cancelAnimationFrame){
+                    stopCheckChange();
+                }
             });
             showPlaceholderIfEmpty(input,o.options);
 
