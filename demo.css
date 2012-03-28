@@ -36,3 +36,9 @@ input[type=submit]{
     width: 1px;
 }
 
+/* demo mode css make polyfilled placeholder red */
+.demo label span.placeholder,
+.demo a.demotoggle,
+strong.alert{
+    color:red;
+}
