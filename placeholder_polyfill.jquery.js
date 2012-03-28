@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.9
+* Version: 1.9.1
 * 
 * History:
 * * 1.0 initial release
@@ -24,10 +24,11 @@
 * * 1.8 replacing the HTML5 Boilerplate .visuallyhidden technique with one that still allows the placeholder to be rendered
 * * 1.8.1 bugfix for implicit labels
 * * 1.9 New option "hideOnFocus" which, if set to false will mimic the behavior of mobile safari and chrome (remove label when typed instead of onfocus)
+* * 1.9.1 added reformat event on window resize
 */
 
 (function($) {
-    var debug = false,
+    var debug = true,
         animId;
     function showPlaceholderIfEmpty(input,options) {
         if( $.trim(input.val()) === '' ){
@@ -132,8 +133,8 @@
             });
             showPlaceholderIfEmpty(input,o.options);
 
-            // optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
-            $(document).bind("fontresize", function(){
+            // reformat on window resize and optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
+            $(document).bind("fontresize resize", function(){
                 positionPlaceholder(placeholder,input);
             });
 
