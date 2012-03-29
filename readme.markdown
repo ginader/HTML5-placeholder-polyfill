@@ -37,7 +37,7 @@ The Placeholder Attribute has decent support across current Browsers. This Scrip
 * Firefox < 4.0
 * Safari < 4.0
 * iOS Safari < 4.0
-* Android Safari
+* Android Browser < 2.0
 
 for more details on native support see the Browser suppport table at [caniuse.com](http://caniuse.com/#search=placeholder)
 
