@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.9.1
+* Version: 1.9.2
 * 
 * History:
 * * 1.0 initial release
@@ -25,6 +25,7 @@
 * * 1.8.1 bugfix for implicit labels
 * * 1.9 New option "hideOnFocus" which, if set to false will mimic the behavior of mobile safari and chrome (remove label when typed instead of onfocus)
 * * 1.9.1 added reformat event on window resize
+* * 1.9.2 more flexible way to "fix" labels that are hidden using clip() thanks to grahambates: https://github.com/ginader/HTML5-placeholder-polyfill/issues/12
 */
 
 (function($) {
@@ -85,7 +86,9 @@
             visibleToScreenreaders : true,
             visibleToScreenreadersHideClass : 'placeholder-hide-exept-screenreader',
             visibleToNoneHideClass : 'placeholder-hide',
-            hideOnFocus : true
+            hideOnFocus : true,
+            hiddenOverrideClass : 'visuallyhidden-with-placeholder',
+            forceHiddenOverride : true
         }, config);
         this.options.hideClass = this.options.visibleToScreenreaders ? this.options.visibleToScreenreadersHideClass : this.options.visibleToNoneHideClass;
         return $(this).each(function() {
@@ -104,9 +107,11 @@
                 log('the input element with the placeholder needs a label!');
                 return;
             }
-            if($(label).hasClass('visuallyhidden')){
-                $(label).removeClass('visuallyhidden').addClass('visuallyhidden-with-placeholder');
+            
+            if( $(label).css('clip') !== 'auto' && o.options.forceHiddenOverride ){
+                $(label).addClass(o.options.hiddenOverrideClass);
             }
+
             placeholder = $('<span class="'+o.options.className+'">'+text+'</span>').appendTo(label);
             titleNeeded = (placeholder.width() > input.width());
             if(titleNeeded){
