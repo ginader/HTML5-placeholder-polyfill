@@ -87,6 +87,7 @@
             visibleToScreenreadersHideClass : 'placeholder-hide-exept-screenreader',
             visibleToNoneHideClass : 'placeholder-hide',
             hideOnFocus : true,
+            removeLabelClass : 'visuallyhidden',
             hiddenOverrideClass : 'visuallyhidden-with-placeholder',
             forceHiddenOverride : true
         }, config);
@@ -108,8 +109,9 @@
                 return;
             }
             
-            if( $(label).css('clip') !== 'auto' && o.options.forceHiddenOverride ){
-                $(label).addClass(o.options.hiddenOverrideClass);
+            if($(label).hasClass(o.options.removeLabelClass)){
+                $(label).removeClass(o.options.removeLabelClass)
+                        .addClass(o.options.hiddenOverrideClass);
             }
 
             placeholder = $('<span class="'+o.options.className+'">'+text+'</span>').appendTo(label);
