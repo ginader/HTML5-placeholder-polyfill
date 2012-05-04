@@ -23,7 +23,7 @@ label span.placeholder-hide{
 
 /* overwrite for the HTML5 Boilerplate way to hide labels */
 label.visuallyhidden-with-placeholder{
-    clip: auto !important;
+    /*clip: auto !important;*/
     height:auto !important;
     overflow: visible !important;
     position:absolute !important;
