@@ -61,7 +61,7 @@ USAGE:
 	          ]
 	});
 
-### Using [yepnope.js](http://yepnopejs.com/) (used as load() in Modernizr)—the same as with Modernizr, but with manual feature detection.
+### Using [yepnope.js](http://yepnopejs.com/) (used as load() in Modernizr), the same as with Modernizr, but with manual feature detection.
 
 	yepnope({
 	    test: ('placeholder' in $('<input>')[0]),
