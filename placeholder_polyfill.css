@@ -7,7 +7,7 @@ label span.placeholder{
     z-index:1;
 }
 
-label span.placeholder-hide-exept-screenreader {
+label span.placeholder-hide-except-screenreader {
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
     padding:0 !important;

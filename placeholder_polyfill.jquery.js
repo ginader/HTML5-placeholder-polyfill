@@ -84,7 +84,7 @@
         this.options = $.extend({
             className: 'placeholder',
             visibleToScreenreaders : true,
-            visibleToScreenreadersHideClass : 'placeholder-hide-exept-screenreader',
+            visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader',
             visibleToNoneHideClass : 'placeholder-hide',
             hideOnFocus : true,
             removeLabelClass : 'visuallyhidden',
