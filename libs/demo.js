@@ -12,7 +12,13 @@ if(window.location.search && window.location.search == '?demo'){
         msg = '';
     if('placeholder' in $('<input>')[0]){ // don't run the polyfill when the browser has native support
         console.log('has native!');
-        msg = '<strong class="alert">YOUR CURRENT BROWSER HAS NATIVE SUPPORT! THE POLYFILL WILL NOT RUN!</strong>';
+        msg = '<strong class="alert">YOUR CURRENT BROWSER HAS NATIVE SUPPORT! ';
+        if(window.placeHolderConfig && window.placeHolderConfig.forceApply){
+            msg += "THE POLYFILL WOULD'T NOT RUN BUT IT'S FORCED IN THIS EXAMPLE!";
+        }else{
+            msg += 'THE POLYFILL WILL NOT RUN!';
+        }
+        msg += '</strong>';
     }else{
         msg = '<strong>Your current Browser does not have native support so the Polyfill will work its magic :-)</strong>';
     }
