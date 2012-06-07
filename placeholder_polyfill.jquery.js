@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 1.9.2
+* Version: 2.0
 * 
 * History:
 * * 1.0 initial release
@@ -26,6 +26,7 @@
 * * 1.9 New option "hideOnFocus" which, if set to false will mimic the behavior of mobile safari and chrome (remove label when typed instead of onfocus)
 * * 1.9.1 added reformat event on window resize
 * * 1.9.2 more flexible way to "fix" labels that are hidden using clip() thanks to grahambates: https://github.com/ginader/HTML5-placeholder-polyfill/issues/12
+* * 2.0 new easier configuration technique and new options forceApply and AutoInit
 */
 
 (function($) {
@@ -80,16 +81,19 @@
         }
     }
     $.fn.placeHolder = function(config) {
+        log('init placeHolder');
         var o = this;
         this.options = $.extend({
-            className: 'placeholder',
-            visibleToScreenreaders : true,
-            visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader',
-            visibleToNoneHideClass : 'placeholder-hide',
-            hideOnFocus : true,
-            removeLabelClass : 'visuallyhidden',
-            hiddenOverrideClass : 'visuallyhidden-with-placeholder',
-            forceHiddenOverride : true
+            className: 'placeholder', // css class that is used to style the placeholder
+            visibleToScreenreaders : true, // expose the placeholder text to screenreaders or not
+            visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader', // css class is used to visually hide the placeholder
+            visibleToNoneHideClass : 'placeholder-hide', // css class used to hide the placeholder for all
+            hideOnFocus : false, // either hide the placeholder on focus or on type
+            removeLabelClass : 'visuallyhidden', // remove this class from a label (to fix hidden labels)
+            hiddenOverrideClass : 'visuallyhidden-with-placeholder', // replace the label above with this class
+            forceHiddenOverride : true, // allow the replace of the removeLabelClass with hiddenOverrideClass or not
+            forceApply : false, // apply the polyfill even for browser with native support
+            autoInit : true // init automatically or not
         }, config);
         this.options.hideClass = this.options.visibleToScreenreaders ? this.options.visibleToScreenreadersHideClass : this.options.visibleToNoneHideClass;
         return $(this).each(function() {
@@ -113,7 +117,7 @@
                 $(label).removeClass(o.options.removeLabelClass)
                         .addClass(o.options.hiddenOverrideClass);
             }
-
+            // todo: allow rerun by checking if span already exists instead of adding it blindly
             placeholder = $('<span class="'+o.options.className+'">'+text+'</span>').appendTo(label);
             titleNeeded = (placeholder.width() > input.width());
             if(titleNeeded){
@@ -157,12 +161,15 @@
         });
     };
     $(function(){
-        if('placeholder' in $('<input>')[0]){ // don't run the polyfill when the browser has native support
+        var config = window.placeHolderConfig || {};
+        if(config.autoInit === false){
+            log('placeholder:abort because autoInit is off');
+            return
+        }
+        if('placeholder' in $('<input>')[0] && !config.forceApply){ // don't run the polyfill when the browser has native support
+            log('placeholder:abort because browser has native support');
             return;
         }
-        $('input[placeholder], textarea[placeholder]').placeHolder({
-            visibleToScreenreaders : true, // set to false if the content of the placeholder is useless or doubling the content of the label
-            hideOnFocus : false // set to false if you want to mimic the behavior of mobile safari and chrome (remove label when typeed instead of onfocus)
-        });
+        $('input[placeholder], textarea[placeholder]').placeHolder(config);
     });
 })(jQuery);
