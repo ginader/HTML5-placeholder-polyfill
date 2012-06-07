@@ -51,8 +51,11 @@ USAGE:
 		<script src="placeholder_polyfill.jquery.min.combo.js" charset="utf-8"></script>
 	</head>
 
+
+
 ### Using [Modernizr](http://www.modernizr.com/), modern browser don't even have to load the polyfill at all.
 
+	<script>
 	Modernizr.load({
 	    test: Modernizr.input.placeholder,
 	    nope: [
@@ -60,9 +63,11 @@ USAGE:
 				'placeholder_polyfill.jquery.min.combo.js'
 	          ]
 	});
+	</script>
 
 ### Using [yepnope.js](http://yepnopejs.com/) (used as load() in Modernizr), the same as with Modernizr, but with manual feature detection.
 
+	<script>
 	yepnope({
 	    test: ('placeholder' in $('<input>')[0]),
 	    nope: [
@@ -70,3 +75,35 @@ USAGE:
                 'placeholder_polyfill.jquery.min.combo.js'
 	          ]
 	});
+	</script>
+
+### Configuring the behavior (optional)
+
+	<head>
+		<link rel="stylesheet" href="placeholder_polyfill.min.css">
+		<script>
+    	placeHolderConfig = {
+    		// css class that is used to style the placeholder
+            	className: 'placeholder', 
+            // expose the placeholder text to screenreaders or not
+	            visibleToScreenreaders : true,
+	        // css class is used to visually hide the placeholder
+		        visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader', 
+		    // css class used to hide the placeholder for all
+	            visibleToNoneHideClass : 'placeholder-hide',
+            // either hide the placeholder on focus or on type
+	            hideOnFocus : false, 
+            // remove this class from a label (to fix hidden labels)
+	            removeLabelClass : 'visuallyhidden', 
+	        // replace the label above with this class
+	            hiddenOverrideClass : 'visuallyhidden-with-placeholder', 
+            // allow the replace of the removeLabelClass with hiddenOverrideClass or not
+	            forceHiddenOverride : true, 
+            // apply the polyfill even for browser with native support
+	            forceApply : false, 
+            // init automatically or not
+            	autoInit : true 
+    	}
+    	</script> 
+		<script src="placeholder_polyfill.jquery.min.combo.js" charset="utf-8"></script>
+	</head>	
