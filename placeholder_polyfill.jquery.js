@@ -26,7 +26,7 @@
 * * 1.9 New option "hideOnFocus" which, if set to false will mimic the behavior of mobile safari and chrome (remove label when typed instead of onfocus)
 * * 1.9.1 added reformat event on window resize
 * * 1.9.2 more flexible way to "fix" labels that are hidden using clip() thanks to grahambates: https://github.com/ginader/HTML5-placeholder-polyfill/issues/12
-* * 2.0 new easier configuration technique and new options forceApply and AutoInit
+* * 2.0 new easier configuration technique and new options forceApply and AutoInit and support for setters and getters
 */
 
 (function($) {
