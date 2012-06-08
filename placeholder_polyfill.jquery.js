@@ -80,9 +80,11 @@
             window.console.log(msg);
         }
     }
+
     $.fn.placeHolder = function(config) {
         log('init placeHolder');
         var o = this;
+        var l = $(this).length;
         this.options = $.extend({
             className: 'placeholder', // css class that is used to style the placeholder
             visibleToScreenreaders : true, // expose the placeholder text to screenreaders or not
@@ -96,7 +98,7 @@
             autoInit : true // init automatically or not
         }, config);
         this.options.hideClass = this.options.visibleToScreenreaders ? this.options.visibleToScreenreadersHideClass : this.options.visibleToNoneHideClass;
-        return $(this).each(function() {
+        return $(this).each(function(index) {
             var input = $(this),
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
@@ -158,7 +160,25 @@
                 // we simply disable the resizeablilty of textareas when we can't react on them resizing
                 $("textarea").css('resize','none');
             }
+
+            if(index >= l-1){
+                $.attrHooks.placeholder = {
+                    get: function(elem) {
+                        if (elem.nodeName.toLowerCase() == 'input' || elem.nodeName.toLowerCase() == 'textarea') {
+                            return $( $(elem).data('placeholder') ).text();
+                        }else{
+                            return undefined;
+                        }
+                    },
+                    set: function(elem, value){
+                        return $( $(elem).data('placeholder') ).text(value);
+                    }
+                };
+            }
         });
+
+    
+
     };
     $(function(){
         var config = window.placeHolderConfig || {};

@@ -32,6 +32,13 @@
     <p>for more details on native support see the Browser suppport table at <a href="http://caniuse.com/#search=placeholder">caniuse.com</a></p>
     <p>Other than most other solutions this Polyfill will read the Placeholder Text to Screenreaders. It does this by adding the Text to the form fields asociated Label.</p>
 
+    <h2>Update Placeholder Attribute</h2>
+    <form>
+        <label for="updatetest">Some Number:</label>
+        <input placeholder="e.g. 42" type="text" name="updatetest" id="updatetest">
+        <button id="updatetestbutton" type="button">alert current Placeholder and change it</button>
+    </form>
+
     <h2>Form Elements with explicit labels (using id and for)</h2>
     <form>
         <label for="firstname">Firstname:</label>
