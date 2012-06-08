@@ -5,6 +5,7 @@ label span.placeholder{
     font-family:sans-serif;
     padding:4px 3px;
     z-index:1;
+    cursor:text;
 }
 
 label span.placeholder-hide-except-screenreader {
