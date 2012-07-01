@@ -27,13 +27,14 @@
 * * 1.9.1 added reformat event on window resize
 * * 1.9.2 more flexible way to "fix" labels that are hidden using clip() thanks to grahambates: https://github.com/ginader/HTML5-placeholder-polyfill/issues/12
 * * 2.0 new easier configuration technique and new options forceApply and AutoInit and support for setters and getters
+* * 2.01 changed check for empty field so a space character is no longer ignored
 */
 
 (function($) {
     var debug = true,
         animId;
     function showPlaceholderIfEmpty(input,options) {
-        if( $.trim(input.val()) === '' ){
+        if( input.val() === '' ){
             input.data('placeholder').removeClass(options.hideClass);
         }else{
             input.data('placeholder').addClass(options.hideClass);

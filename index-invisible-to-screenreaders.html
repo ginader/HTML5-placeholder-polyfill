@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 placeholder polyfill</title>
+
+<!-- DEMO styles. Only needed for this Example. Not pretty... -->
+    <link rel="stylesheet" href="demo.css">
+
+<!-- include the default CSS -->
+    <link rel="stylesheet" href="placeholder_polyfill.css">
+    
+<!-- include the default Javascript (jQuery) -->
+    <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+    <ul id="nav">
+        <li><a href="index.html">Basic Example</a></li>
+        <li><a href="index-modernizr.html">Example using Modernizr</a></li>
+        <li><a href="index-chromeish.html">Example that hides on type instead on focus</a></li>
+        <li><strong>Example that runs the polyfill in all Browsers</strong></li>
+    </ul>
+    <h1>HTML5 Placeholder Polyfill Examples</h1>
+    <p>The Placeholder Attribute has decent support across current Browsers. This Script adds support for the older generations including:</p>
+    <ul id="browserlist">
+        <li>Internet Explorer &lt; 10</li>
+        <li>Firefox &lt; 4.0</li>
+        <li>Safari &lt; 4.0</li>
+        <li>iOS Safari &lt; 4.0</li>
+        <li>Android Browser &lt; 2.0</li>
+    </ul>
+    <p>for more details on native support see the Browser suppport table at <a href="http://caniuse.com/#search=placeholder">caniuse.com</a></p>
+    <p>Other than most other solutions this Polyfill will read the Placeholder Text to Screenreaders. It does this by adding the Text to the form fields asociated Label.</p>
+
+    <h2>Update Placeholder Attribute</h2>
+    <form>
+        <label for="updatetest">Some Number:</label>
+        <input placeholder="e.g. 42" type="text" name="updatetest" id="updatetest">
+        <button id="updatetestbutton" type="button">alert current Placeholder and change it</button>
+    </form>
+
+    <h2>Form Elements with explicit labels (using id and for)</h2>
+    <form>
+        <label for="firstname">Firstname:</label>
+        <input placeholder="e.g. Jeff" type="text" name="firstname" id="firstname">
+        <br>
+        <label for="lastname">Lastname:</label>
+        <input placeholder="e.g. Lebowski" type="text" name="lastname" id="lastname">
+        <br>
+        <label for="street">Street:</label>
+        <input placeholder="e.g. 1000 main str and quite some extra text so it doesn't fit inside of the field" type="text" name="street" id="street">
+        <br>
+        <label for="password">password:</label>
+        <input placeholder="e.g. the Dude" type="password" name="password" id="password">
+        <br>
+        <label for="message">Message:</label>
+        <textarea placeholder="e.g. Well, sir, it's this rug I had. It really tied the room together." name="message" id="message" rows="2"></textarea>
+        <br>
+        <input type="submit" value="send">
+    </form>
+
+
+    <h2>Form Element with visually hidden label (i.e. for search boxes)</h2>
+    <h3>Using the "visuallyhidden" class from i.e. HTML5 Boilerplate</h3>
+    <p>HTML5 Boilerplate uses a way to visually hide elements that makes it impossible for containing elements (like the polyfilled Placeholder) to be visible. To make it work anyway the Polyfill changes said technique (only for labels) with a technique that is less obstrusive but still hides them.</p>
+    <form>
+        <label class="visuallyhidden" for="search2">Search:</label>
+        <input placeholder="e.g. Yourself..." type="text" name="search" id="search2">
+        <input type="submit" value="search">
+    </form>
+
+    <h3>Using the oldschool "offscreen" class (pushing the element to the far left using position:absolute)</h3>
+    <form>
+        <label class="offscreen" for="search">Search:</label>
+        <input placeholder="e.g. Yourself..." type="text" name="search" id="search">
+        <input type="submit" value="search">
+    </form>
+
+
+    <h2>Form Elements with implicit labels (wrapping the form element into the label)</h2>
+    <form class="implicit">
+        <label>Firstname:
+            <input placeholder="e.g. Jeff" type="text" name="firstname">
+        </label>
+        <br>
+        <label>Lastname:
+            <input placeholder="e.g. Lebowski" type="text" name="lastname">
+        </label>
+        <br>
+        <label>Street:
+            <input placeholder="e.g. 1000 main str and quite some extra text so it doesn't fit inside of the field" type="text" name="street">
+        </label>
+        <br>
+        <label>password:
+            <input placeholder="e.g. the Dude" type="password" name="password">
+        </label>
+        <br>
+        <label>Message:
+            <textarea placeholder="e.g. Well, sir, it's this rug I had. It really tied the room together." name="message" rows="2"></textarea>
+        </label>
+        <br>
+        <input type="submit" value="send">
+    </form>
+
+<!-- optional but recommend - repositions the placeholders when a user resizes their font size -->
+    <script src="libs/onfontresize.jquery.min.js" charset="utf-8"></script>
+<!-- highly optional - repositions the placeholders when a user resizes a textarea. If not used then textarea resizing will simply be disabled -->
+    <script src="libs/jquery.ba-resize.min.js" charset="utf-8"></script>
+    <!-- required if hideOnFocus is set to false to be able to efficiently poll for input text changes -->
+    <script src="libs/rAF.min.js" charset="utf-8"></script>
+<!-- this is where the Magic happens — simply include the polyfill and it will only execute if needed -->
+    <script>
+    placeHolderConfig = {
+        // forcing the polyfill to run no matter if the browser could do it without help
+        forceApply : true,
+        visibleToScreenreaders : false // don't expose the placeholder text to Screenreaders (i.e. to avoid duplication or a Label text that would be too long)
+    }
+    </script>  
+    <script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
+
+
+
+<!-- ignore from here on -->
+
+    <a href="https://github.com/ginader/HTML5-placeholder-polyfill"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
+
+<!-- DEMO JS Only needed for this Example. Not needed -->
+    <script src="libs/demo.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-299719-2");
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    </script>
+
+</body>
+</html>
