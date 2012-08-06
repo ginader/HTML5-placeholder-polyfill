@@ -103,21 +103,21 @@
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
                 label,placeholder,titleNeeded;
-            label = input.closest('label')[0];
+            label = input.closest('label');
             input.attr('placeholder','');
-            if(!label && !id){
+            if(!label.length && !id){
                 log('the input element with the placeholder needs an id!');
                 return;
             }
-            label = label || $('label[for="'+id+'"]');
-            if(!label){
+            label = label.length ? label : $('label[for="'+id+'"]').first();
+            if(!label.length){
                 log('the input element with the placeholder needs a label!');
                 return;
             }
             
-            if($(label).hasClass(o.options.removeLabelClass)){
-                $(label).removeClass(o.options.removeLabelClass)
-                        .addClass(o.options.hiddenOverrideClass);
+            if(label.hasClass(o.options.removeLabelClass)){
+                label.removeClass(o.options.removeLabelClass)
+                     .addClass(o.options.hiddenOverrideClass);
             }
             // todo: allow rerun by checking if span already exists instead of adding it blindly
             placeholder = $('<span class="'+o.options.className+'">'+text+'</span>').appendTo(label);
