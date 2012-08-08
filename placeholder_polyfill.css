@@ -1,4 +1,4 @@
-label span.placeholder{
+span.placeholder{
     position:absolute;
     font-size:75%;
     color:#999;
@@ -8,7 +8,7 @@ label span.placeholder{
     cursor:text;
 }
 
-label span.placeholder-hide-except-screenreader {
+span.placeholder-hide-except-screenreader {
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
     padding:0 !important;
@@ -18,7 +18,7 @@ label span.placeholder-hide-except-screenreader {
     overflow: hidden;
 }
 
-label span.placeholder-hide{
+span.placeholder-hide{
 	display:none;
 }
 
