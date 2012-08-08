@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 2.0
+* Version: 2.0.2
 * 
 * History:
 * * 1.0 initial release
@@ -28,6 +28,7 @@
 * * 1.9.2 more flexible way to "fix" labels that are hidden using clip() thanks to grahambates: https://github.com/ginader/HTML5-placeholder-polyfill/issues/12
 * * 2.0 new easier configuration technique and new options forceApply and AutoInit and support for setters and getters
 * * 2.0.1 changed check for empty field so a space character is no longer ignored
+* * 2.0.2 allow rerun of the placeholder() to cover generated elements - existing polyfilled placeholder will be repositioned. Fixing: https://github.com/ginader/HTML5-placeholder-polyfill/issues/15
 */
 
 (function($) {
@@ -103,10 +104,18 @@
             var input = $(this),
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
+<<<<<<< HEAD
                 label,placeholder,titleNeeded;
             label = input.closest('label');
             input.attr('placeholder','');
             if(!label.length && !id){
+=======
+                label,placeholder,titleNeeded,polyfilled;
+            label = input.closest('label')[0];
+            //input.attr('placeholder','');
+            input.removeAttr('placeholder');
+            if(!label && !id){
+>>>>>>> 2.0.2 allow rerun of the placeholder() to cover generated elements - existing polyfilled placeholder will be repositioned. Close #15
                 log('the input element with the placeholder needs an id!');
                 return;
             }
@@ -115,13 +124,20 @@
                 log('the input element with the placeholder needs a label!');
                 return;
             }
+            polyfilled = $(label).find('.placeholder');
+            if(polyfilled.length) {
+                //log('the input element already has a polyfilled placeholder!');
+                positionPlaceholder(polyfilled,input);
+                return input;
+            }
             
             if(label.hasClass(o.options.removeLabelClass)){
                 label.removeClass(o.options.removeLabelClass)
                      .addClass(o.options.hiddenOverrideClass);
             }
-            // todo: allow rerun by checking if span already exists instead of adding it blindly
+
             placeholder = $('<span class="'+o.options.className+'">'+text+'</span>').appendTo(label);
+
             titleNeeded = (placeholder.width() > input.width());
             if(titleNeeded){
                 placeholder.attr('title',text);
@@ -166,7 +182,14 @@
                 $.attrHooks.placeholder = {
                     get: function(elem) {
                         if (elem.nodeName.toLowerCase() == 'input' || elem.nodeName.toLowerCase() == 'textarea') {
-                            return $( $(elem).data('placeholder') ).text();
+                            if( $(elem).data('placeholder') ){ 
+                                // has been polyfilled
+                                return $( $(elem).data('placeholder') ).text();
+                            }else{
+                                // native / not yet polyfilled
+                                return $(elem)[0].placeholder;
+                            }
+                            
                         }else{
                             return undefined;
                         }
