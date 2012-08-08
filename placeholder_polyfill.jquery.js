@@ -104,18 +104,10 @@
             var input = $(this),
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
-<<<<<<< HEAD
-                label,placeholder,titleNeeded;
-            label = input.closest('label');
-            input.attr('placeholder','');
-            if(!label.length && !id){
-=======
                 label,placeholder,titleNeeded,polyfilled;
-            label = input.closest('label')[0];
-            //input.attr('placeholder','');
+            label = input.closest('label');
             input.removeAttr('placeholder');
-            if(!label && !id){
->>>>>>> 2.0.2 allow rerun of the placeholder() to cover generated elements - existing polyfilled placeholder will be repositioned. Close #15
+            if(!label.length && !id){
                 log('the input element with the placeholder needs an id!');
                 return;
             }
