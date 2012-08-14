@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 2.0.2
+* Version: 2.0.3
 * 
 * History:
 * * 1.0 initial release
@@ -29,10 +29,11 @@
 * * 2.0 new easier configuration technique and new options forceApply and AutoInit and support for setters and getters
 * * 2.0.1 changed check for empty field so a space character is no longer ignored
 * * 2.0.2 allow rerun of the placeholder() to cover generated elements - existing polyfilled placeholder will be repositioned. Fixing: https://github.com/ginader/HTML5-placeholder-polyfill/issues/15
+* * 2.0.3 turn debugging of for production. fix https://github.com/ginader/HTML5-placeholder-polyfill/issues/18
 */
 
 (function($) {
-    var debug = true,
+    var debug = false,
         animId;
     function showPlaceholderIfEmpty(input,options) {
         if( input.val() === '' ){
