@@ -1,5 +1,5 @@
 /**
-* this is only needed in the Polyfill demos to disdinguish the difference between native placeholders and the polyfill
+* this is only needed in the Polyfill demos to distinguish the difference between native placeholders and the polyfill
 */
 if(window.location.search && window.location.search == '?demo'){
     window.demo = true;
