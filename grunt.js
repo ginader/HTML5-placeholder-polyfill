@@ -11,16 +11,16 @@ module.exports = function(grunt) {
         '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
-    concat: {
-      dist: {
-        src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
     min: {
       dist: {
-        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-        dest: 'dist/<%= pkg.name %>.min.js'
+        src: ['placeholder_polyfill.jquery.js'],
+        dest: 'placeholder_polyfill.jquery.min.js'
+      }
+    },
+    concat: {
+      dist: {
+        src: ['libs/onfontresize.jquery.min.js', 'placeholder_polyfill.jquery.min.js'],
+        dest: 'placeholder_polyfill.jquery.min.combo.js'
       }
     },
     lint: {
@@ -54,6 +54,6 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint concat min');
+  grunt.registerTask('default', 'lint min concat');
 
 };
