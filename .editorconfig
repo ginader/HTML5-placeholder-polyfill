@@ -1,0 +1,9 @@
+; This file is for unifying the coding style for different editors and IDEs.
+; More information at http://EditorConfig.org
+
+root = true 			; top-most EditorConfig file
+
+[*] 					; Global settings across all file types
+end_of_line = LF 		; Unix-style newlines
+indent_style = space 	; space indentation instead of tabs
+indent_size = 4 		; intend using 4 spaces
