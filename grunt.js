@@ -5,26 +5,28 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: '<json:HTML5-placeholder-polyfill.jquery.json>',
     meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+      banner: '/** \n' +
+        ' * <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+        ' * web: <%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
+        ' * issues: <%= pkg.bugs.url ? "* " + pkg.bugs.url + "\n" : "" %>' +
+        ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> \n*/'
     },
     min: {
       dist: {
-        src: ['placeholder_polyfill.jquery.js'],
-        dest: 'placeholder_polyfill.jquery.min.js'
+        src: ['<banner:meta.banner>','src/placeholder_polyfill.jquery.js'],
+        dest: 'dist/placeholder_polyfill.jquery.min.js'
       }
     },
     concat: {
       dist: {
-        src: ['libs/onfontresize.jquery.min.js', 'placeholder_polyfill.jquery.min.js'],
-        dest: 'placeholder_polyfill.jquery.min.combo.js'
+        src: ['libs/onfontresize.jquery.min.js', 'dist/placeholder_polyfill.jquery.min.js'],
+        dest: 'dist/placeholder_polyfill.jquery.min.combo.js'
       }
     },
     lint: {
-      files: ['grunt.js', 'placeholder_polyfill.jquery.js']
+      files: ['grunt.js', 'src/placeholder_polyfill.jquery.js']
     },
     watch: {
       files: '<config:lint.files>',
