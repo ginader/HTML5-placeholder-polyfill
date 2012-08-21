@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="demo.css">
 
 <!-- include the default CSS -->
-    <link rel="stylesheet" href="placeholder_polyfill.css">
+    <link rel="stylesheet" href="../src/placeholder_polyfill.css">
     
 <!-- include the default Javascript (jQuery) -->
-    <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
+    <script src="../libs/jquery-1.6.2.min.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -103,20 +103,19 @@
     </form>
 
 <!-- optional but recommend - repositions the placeholders when a user resizes their font size -->
-    <script src="libs/onfontresize.jquery.min.js" charset="utf-8"></script>
+    <script src="../libs/onfontresize.jquery.min.js" charset="utf-8"></script>
 <!-- highly optional - repositions the placeholders when a user resizes a textarea. If not used then textarea resizing will simply be disabled -->
-    <script src="libs/jquery.ba-resize.min.js" charset="utf-8"></script>
+    <script src="../libs/jquery.ba-resize.min.js" charset="utf-8"></script>
     <!-- required if hideOnFocus is set to false to be able to efficiently poll for input text changes -->
-    <script src="libs/rAF.min.js" charset="utf-8"></script>
+    <script src="../libs/rAF.min.js" charset="utf-8"></script>
 <!-- this is where the Magic happens — simply include the polyfill and it will only execute if needed -->
     <script>
     placeHolderConfig = {
         // forcing the polyfill to run no matter if the browser could do it without help
-        forceApply : true,
-        visibleToScreenreaders : false // don't expose the placeholder text to Screenreaders (i.e. to avoid duplication or a Label text that would be too long)
+        forceApply : true
     }
     </script>  
-    <script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
+    <script src="../src/placeholder_polyfill.jquery.js" charset="utf-8"></script>
 
 
 
@@ -125,7 +124,7 @@
     <a href="https://github.com/ginader/HTML5-placeholder-polyfill"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
 
 <!-- DEMO JS Only needed for this Example. Not needed -->
-    <script src="libs/demo.js" charset="utf-8"></script>
+    <script src="demo.js" charset="utf-8"></script>
 
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -6,17 +6,15 @@
 <!-- DEMO styles. Only needed for this Example. Not pretty... -->
     <link rel="stylesheet" href="demo.css">
 
-<!-- include the default CSS -->
-    <link rel="stylesheet" href="placeholder_polyfill.css">
-    
-<!-- include the default Javascript (jQuery) -->
-    <script src="libs/jquery-1.6.2.min.js" charset="utf-8"></script>
+<!-- include the default Javascript (jQuery and Modernizr) -->
+    <script src="../libs/modernizr-2.0.6.min.js" charset="utf-8"></script>
+    <script src="../libs/jquery-1.6.2.min.js" charset="utf-8"></script>
 
 </head>
 <body>
     <ul id="nav">
-        <li><strong>Basic Example</strong></li>
-        <li><a href="index-modernizr.html">Example using Modernizr</a></li>
+        <li><a href="index.html">Basic Example</a></li>
+        <li><strong>Example using Modernizr</strong></li>
         <li><a href="index-chromeish.html">Example that hides on type instead on focus</a></li>
         <li><a href="index-force.html">Example that runs the polyfill in all Browsers</a></li>
     </ul>
@@ -30,16 +28,6 @@
         <li>Android Browser &lt; 2.0</li>
     </ul>
     <p>for more details on native support see the Browser suppport table at <a href="http://caniuse.com/#search=placeholder">caniuse.com</a></p>
-    <p>Other than most other solutions this Polyfill will read the Placeholder Text to Screenreaders. It does this by adding the Text to the form fields asociated Label.</p>
-
-
-    <h2>Create new Formfields</h2>
-    <form>
-        <label class="duplicate">Some Number:
-            <input placeholder="e.g. 42" type="text" name="newtest">
-        </label><br>
-        <button id="newtestbutton" type="button">add new field</button>
-    </form>
 
     <h2>Update Placeholder Attribute</h2>
     <form>
@@ -111,35 +99,29 @@
         <input type="submit" value="send">
     </form>
 
-<!-- optional but recommend - repositions the placeholders when a user resizes their font size -->
-    <script src="libs/onfontresize.jquery.min.js" charset="utf-8"></script>
-<!-- highly optional - repositions the placeholders when a user resizes a textarea. If not used then textarea resizing will simply be disabled -->
-    <script src="libs/jquery.ba-resize.min.js" charset="utf-8"></script>
-<!-- this is where the Magic happens — simply include the polyfill and it will only execute if needed -->
-    <script>
-    placeHolderConfig = {
-        // forcing the polyfill to run no matter if the browser could do it without help
-        forceApply : true
-    }
-    </script> 
-    <script src="placeholder_polyfill.jquery.js" charset="utf-8"></script>
+<!-- this is where the Magic happens — we feature test for placeholder support and load the polyfill if needed -->
 
-    <script>
-    (function($) {
-        $('#newtestbutton').click(function(){
-            $('<br><label class="duplicate">Some Number: <input placeholder="e.g. 42" type="text" name="newtest"></label>').insertAfter('.duplicate:last');
-            $('input[placeholder], textarea[placeholder]').placeHolder();
+    <script type="text/javascript" charset="utf-8">
+    // remove/add the second slash in the following line to toggle between production and dev block
+
+        Modernizr.load({
+            test: Modernizr.input.placeholder,
+            nope: [
+                    '../libs/onfontresize.jquery.min.js', // optional
+                    '../libs/jquery.ba-resize.min.js', // optional
+                    '../src/placeholder_polyfill.css',
+                    '../src/placeholder_polyfill.jquery.js', // this and the css above are the only required files
+                  ]
         });
-    })(jQuery);
-    </script>
 
+    </script>
 
 <!-- ignore from here on -->
 
     <a href="https://github.com/ginader/HTML5-placeholder-polyfill"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
 
 <!-- DEMO JS Only needed for this Example. Not needed -->
-    <script src="libs/demo.js" charset="utf-8"></script>
+    <script src="demo.js" charset="utf-8"></script>
 
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
