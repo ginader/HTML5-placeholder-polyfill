@@ -23,15 +23,12 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
-    qunit: {
-      files: ['test/**/*.html']
-    },
     lint: {
-      files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
+      files: ['grunt.js', 'placeholder_polyfill.jquery.js']
     },
     watch: {
       files: '<config:lint.files>',
-      tasks: 'lint qunit'
+      tasks: 'lint'
     },
     jshint: {
       options: {
@@ -48,13 +45,15 @@ module.exports = function(grunt) {
         browser: true
       },
       globals: {
-        jQuery: true
+        jQuery: true,
+        requestAnimationFrame: true,
+        cancelAnimationFrame: true
       }
     },
     uglify: {}
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+  grunt.registerTask('default', 'lint concat min');
 
 };

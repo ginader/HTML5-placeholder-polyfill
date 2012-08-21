@@ -56,24 +56,22 @@
         }).offset(input.offset());
     }
     function startFilledCheckChange(input,options){
-        var input = input,
-            val = input.val();
+        var val = input.val();
         (function checkloop(){
             animId = requestAnimationFrame(checkloop);
-            if(input.val() != val){
+            if(input.val() !== val){
                 hidePlaceholder(input,options);
                 stopCheckChange();
                 startEmptiedCheckChange(input,options);
             }
-        })();
+        }());
     }
     function startEmptiedCheckChange(input,options){
-        var input = input,
-            val = input.val();
+        var val = input.val();
         (function checkloop(){
             animId = requestAnimationFrame(checkloop);
             showPlaceholderIfEmpty(input,options);
-        })();
+        }());
     }
     function stopCheckChange(){
         cancelAnimationFrame(animId);
@@ -174,7 +172,7 @@
             if(index >= l-1){
                 $.attrHooks.placeholder = {
                     get: function(elem) {
-                        if (elem.nodeName.toLowerCase() == 'input' || elem.nodeName.toLowerCase() == 'textarea') {
+                        if (elem.nodeName.toLowerCase() === 'input' || elem.nodeName.toLowerCase() === 'textarea') {
                             if( $(elem).data('placeholder') ){ 
                                 // has been polyfilled
                                 return $( $(elem).data('placeholder') ).text();
@@ -201,7 +199,7 @@
         var config = window.placeHolderConfig || {};
         if(config.autoInit === false){
             log('placeholder:abort because autoInit is off');
-            return
+            return;
         }
         if('placeholder' in $('<input>')[0] && !config.forceApply){ // don't run the polyfill when the browser has native support
             log('placeholder:abort because browser has native support');
@@ -209,4 +207,4 @@
         }
         $('input[placeholder], textarea[placeholder]').placeHolder(config);
     });
-})(jQuery);
+}(jQuery));
