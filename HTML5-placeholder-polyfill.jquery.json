@@ -2,7 +2,7 @@
   "name": "HTML5-placeholder-polyfill",
   "title": "Html5 Placeholder Polyfill",
   "description": "Lightweight and very robust little jQuery plugin that generates the look and feel of the HTML5 placeholder attribute for browsers without native support",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "homepage": "http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/",
   "author": {
     "name": "Dirk Ginader",
@@ -19,11 +19,11 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill//blob/master/LICENSE-MIT"
+      "url": "https://github.com/ginader/HTML5-placeholder-polyfill//blob/master/LICENSE-MIT"
     },
     {
       "type": "GPL",
-      "url": "http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill//blob/master/LICENSE-GPL"
+      "url": "https://github.com/ginader/HTML5-placeholder-polyfill//blob/master/LICENSE-GPL"
     }
   ],
   "dependencies": {
