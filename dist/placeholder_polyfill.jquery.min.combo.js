@@ -8,7 +8,7 @@ if(a.browser.msie){c.bind("resize",function(){a.onFontResize.trigger(c[0].offset
 b=b.document||b;b.open();b.write('<script>window.onload = function(){var em = parent.jQuery(".div-onfontresize")[0];window.onresize = function(){if(parent.jQuery.onFontResize){parent.jQuery.onFontResize.trigger(em.offsetWidth / 100);}}};<\/script>');
 b.close();}});return{trigger:function(b){a(document).trigger("fontresize",[b]);}};})(jQuery);
 /** 
- * Html5 Placeholder Polyfill - v2.0.3 - 2012-08-21
+ * Html5 Placeholder Polyfill - v2.0.4 - 2012-08-21
  * web: * http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/
  * issues: * https://github.com/ginader/HTML5-placeholder-polyfill/issues
  * Copyright (c) 2012 Dirk Ginader; Licensed MIT, GPL 
