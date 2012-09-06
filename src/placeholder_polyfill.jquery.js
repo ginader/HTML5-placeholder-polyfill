@@ -101,6 +101,7 @@
             if(polyfilled.length) {
                 //log('the input element already has a polyfilled placeholder!');
                 positionPlaceholder(polyfilled,input);
+                polyfilled.text(text);
                 return input;
             }
             
