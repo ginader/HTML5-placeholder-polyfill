@@ -32,16 +32,16 @@
 
         // Determine if we need to shift the header down more.
         var offset = input.offset();
-        if (input.css('padding') !== '0px') {
+        if (input.css('padding') && input.css('padding') !== '0px') {
           var padding = input.css('padding').split(' ');
           offset.top += Number(padding[0].replace('px', ''));
           offset.left += Number(padding[padding.length - 1].replace('px', ''));
         }
         else {
-          if (input.css('padding-top') !== '0px') {
+          if (input.css('padding-top') && input.css('padding-top') !== '0px') {
             offset.top += Number(input.css('padding-top').replace('px', ''));
           }
-          if (input.css('padding-left') !== '0px') {
+          if (input.css('padding-left') && input.css('padding-left') !== '0px') {
             offset.left += Number(input.css('padding-left').replace('px', ''));
           }
         }
