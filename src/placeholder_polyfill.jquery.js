@@ -29,13 +29,30 @@
     }
     function positionPlaceholder(placeholder,input){
         var ta  = input.is('textarea');
+
+        // Determine if we need to shift the header down more.
+        var offset = input.offset();
+        if (input.css('padding') !== '0px') {
+          var padding = input.css('padding').split(' ');
+          offset.top += Number(padding[0].replace('px', ''));
+          offset.left += Number(padding[padding.length - 1].replace('px', ''));
+        }
+        else {
+          if (input.css('padding-top') !== '0px') {
+            offset.top += Number(input.css('padding-top').replace('px', ''));
+          }
+          if (input.css('padding-left') !== '0px') {
+            offset.left += Number(input.css('padding-left').replace('px', ''));
+          }
+        }
+
         placeholder.css({
             width : input.innerWidth()-(ta ? 20 : 4),
             height : input.innerHeight()-6,
             lineHeight : input.css('line-height'),
             whiteSpace : ta ? 'normal' : 'nowrap',
             overflow : 'hidden'
-        }).offset(input.offset());
+        }).offset(offset);
     }
     function startFilledCheckChange(input,options){
         var val = input.val();
