@@ -86,6 +86,9 @@
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
                 label,placeholder,titleNeeded,polyfilled;
+            if(text === "" || text === undefined) {
+              text = input[0].attributes["placeholder"].value;
+            }
             label = input.closest('label');
             input.removeAttr('placeholder');
             if(!label.length && !id){
