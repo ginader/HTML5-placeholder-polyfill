@@ -110,7 +110,7 @@
                      .addClass(o.options.hiddenOverrideClass);
             }
 
-            placeholder = $('<span class="'+o.options.className+'">'+text+'</span>').appendTo(label);
+            placeholder = $('<span>').addClass(o.options.className).text(text).appendTo(label);
 
             titleNeeded = (placeholder.width() > input.width());
             if(titleNeeded){
