@@ -49,7 +49,6 @@
         }());
     }
     function startEmptiedCheckChange(input,options){
-        var val = input.val();
         (function checkloop(){
             animId = requestAnimationFrame(checkloop);
             showPlaceholderIfEmpty(input,options);
