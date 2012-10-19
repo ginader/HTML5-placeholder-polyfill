@@ -200,7 +200,7 @@
             log('placeholder:abort because autoInit is off');
             return;
         }
-        if('placeholder' in $('<input>')[0] && !config.forceApply){ // don't run the polyfill when the browser has native support
+        if(('placeholder' in $('<input>')[0] || 'placeHolder' in $('<input>')[0]) && !config.forceApply){ // don't run the polyfill when the browser has native support
             log('placeholder:abort because browser has native support');
             return;
         }
