@@ -8,9 +8,9 @@ Demos:
 ------
 __To see the actual work of this polyfill use an old browser like Firefox 3.6!__
 
-* __[check out the DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/)__
-* __[check out the Chrome style DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/index-chromeish.html)__
-* __[check out the DEMO using Modernizr to load the Polyfill](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/index-modernizr.html)__ (Thanks to Modernizr/yepnope nothing needs to get loaded when the Browser natively supports the placeholder)
+* __[check out the DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/docs/)__
+* __[check out the Chrome style DEMO](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/docs/index-chromeish.html)__
+* __[check out the DEMO using Modernizr to load the Polyfill](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/docs/index-modernizr.html)__ (Thanks to Modernizr/yepnope nothing needs to get loaded when the Browser natively supports the placeholder)
 
 
 Requires:
