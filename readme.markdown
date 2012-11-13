@@ -51,7 +51,7 @@ USAGE:
 		<script src="placeholder_polyfill.jquery.min.combo.js" charset="utf-8"></script>
 	</head>
 
-
+Please bear in mind that every input needs a linked label in order for the plugin to work.
 
 ### Using [Modernizr](http://www.modernizr.com/), modern browser don't even have to load the polyfill at all.
 
