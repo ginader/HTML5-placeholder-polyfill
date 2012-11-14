@@ -52,10 +52,26 @@ module.exports = function(grunt) {
         cancelAnimationFrame: true
       }
     },
-    uglify: {}
+    uglify: {},
+    markdown: {
+      all: {
+        files: ['readme.markdown','version-history.markdown'],
+        template: 'web/template.html',
+        dest: 'web',
+        options: {
+          gfm: true,
+          codeLines: {
+            before: '<span>',
+            after: '</span>'
+          }
+        }
+      }
+    }
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint min concat');
+  grunt.registerTask('default', 'lint min concat markdown');
+
+  grunt.loadNpmTasks('grunt-markdown');
 
 };
