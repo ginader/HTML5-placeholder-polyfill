@@ -18,3 +18,4 @@ History:
 * 2.0.2 allow rerun of the placeholder() to cover generated elements - existing polyfilled placeholder will be repositioned. Fixing: https://github.com/ginader/HTML5-placeholder-polyfill/issues/15
 * 2.0.3 turn debugging of for production. fix https://github.com/ginader/HTML5-placeholder-polyfill/issues/18
 * 2.0.4 moved to grunt as build tool and restructured the project
+* 2.0.5 added markdown conversion
