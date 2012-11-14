@@ -10,7 +10,7 @@
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
 *
-* Version: 2.0.5
+* Version: 2.0.6
 * 
 */
 
@@ -102,6 +102,9 @@
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
                 label,placeholder,titleNeeded,polyfilled;
+            if(text === "" || text === undefined) {
+              text = input[0].attributes["placeholder"].value;
+            }
             label = input.closest('label');
             input.removeAttr('placeholder');
             if(!label.length && !id){
