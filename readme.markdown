@@ -23,6 +23,8 @@ Optional but recommended:
 
 * [fontresize](https://github.com/johnantoni/jquery.onfontresize) (excellent even though terribly unmaintained event plugin that fires when a user changes the font size of their browser (that usually breaks the other placeholder polyfills))
 
+* [requestAnimationFrame polyfill](https://gist.github.com/1579671) (Very useful Polyfill) Required when 'hideOnFocus' is set to: false (aka: behave like Chrome and hide only when types insteaad on focus)
+
 Highly optional (only needed if you want users to be able to resize textareas):
 
 * [jquery-resize](https://github.com/cowboy/jquery-resize) if included a repositioning is triggered when a user resizes a textarea. If not I disable the resizing of textareas to avoid rendering problems
