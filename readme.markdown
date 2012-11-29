@@ -13,8 +13,10 @@ __To see the actual work of this polyfill use an old browser like Firefox 3.6!__
 * __[check out the DEMO using Modernizr to load the Polyfill](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/docs/index-modernizr.html)__ (Thanks to Modernizr/yepnope nothing needs to get loaded when the Browser natively supports the placeholder)
 
 
-Requires:
----------
+Dependencies:
+-------------
+
+### Required:
 
 * [jQuery](http://jquery.com/) (tested with 1.6.2 but might as well work with older versions)
 
@@ -27,7 +29,7 @@ Requires:
 
 ### Optional 
 
-#### Required if hiding the placeholder when user types instead of onfocus like Chrome or mobile Safari {hideOnFocus : false}
+#### Required if hiding the placeholder when user types instead of onfocus (like Chrome or mobile Safari) {hideOnFocus : false}
 
 * [requestAnimationFrame polyfill](https://gist.github.com/1579671) better than a simple timeout loop as browsers can slow the loop down when it's not the active window
 
