@@ -17,19 +17,29 @@ Requires:
 ---------
 
 * [jQuery](http://jquery.com/) (tested with 1.6.2 but might as well work with older versions)
-* [Modernizr](http://www.modernizr.com/) (tested with 2.0.6) OR [yepnope.js](http://yepnopejs.com/)
 
-Optional but recommended:
+### Optional but recommended:
+
+* [Modernizr](http://www.modernizr.com/) (tested with 2.0.6) OR [yepnope.js](http://yepnopejs.com/)
+	* yepnope.js is included with Modernizr by default. Just make sure the setting in the Extras-Block: "Modernizr.load (yepnope.js)" is checked on the [Modernizr Download Page](http://modernizr.com/download/)
 
 * [fontresize](https://github.com/johnantoni/jquery.onfontresize) (excellent even though terribly unmaintained event plugin that fires when a user changes the font size of their browser (that usually breaks the other placeholder polyfills))
 
-Highly optional (only needed if you want users to be able to resize textareas):
+### Optional 
+
+#### Required if hiding the placeholder when user types instead of onfocus like Chrome or mobile Safari {hideOnFocus : false}
+
+* [requestAnimationFrame polyfill](https://gist.github.com/1579671) better than a simple timeout loop as browsers can slow the loop down when it's not the active window
+
+### Highly optional 
+
+#### only needed if you want users to be able to resize textareas:
 
 * [jquery-resize](https://github.com/cowboy/jquery-resize) if included a repositioning is triggered when a user resizes a textarea. If not I disable the resizing of textareas to avoid rendering problems
 
-Required only if hiding placeholder when user types instead of onfocus like Chrome or mobile Safari:
 
-* [requestAnimationFrame polyfill](https://gist.github.com/1579671) better than a simple timeout loop as browsers can slow the loop down when it's not the active window
+Browser Support
+---------------
 
 The placeholder attribute has decent support across current Browsers. This script adds support for the older generations including:
 
