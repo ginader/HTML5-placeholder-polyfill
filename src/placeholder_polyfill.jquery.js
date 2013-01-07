@@ -20,7 +20,7 @@
         supportsNative = 'placeholder' in $('<input>')[0];
 
     function shouldInitPolyfill(forceApply) {
-        return !(supportsNative || (supportsNative && forceApply === true));
+        return (supportsNative === false || (supportsNative === true && forceApply === true));
     }
     function showPlaceholderIfEmpty(input,options) {
         if( input.val() === '' ){
@@ -109,7 +109,7 @@
                 id = input.attr('id'),
                 label,placeholder,titleNeeded,polyfilled;
 
-            if (!shouldInitPolyfill(closure.options.forceApply)) {
+            if (shouldInitPolyfill(closure.options.forceApply) === false) {
                 return input;
             }
 
