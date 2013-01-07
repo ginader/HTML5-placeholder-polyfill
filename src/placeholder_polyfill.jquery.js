@@ -1,7 +1,7 @@
 /**
 * HTML5 placeholder polyfill
 * @requires jQuery - tested with 1.6.2 but might as well work with older versions
-* 
+*
 * code: https://github.com/ginader/HTML5-placeholder-polyfill
 * please report issues at: https://github.com/ginader/HTML5-placeholder-polyfill/issues
 *
@@ -11,12 +11,17 @@
 * http://www.gnu.org/licenses/gpl.html
 *
 * Version: 2.0.6
-* 
+*
 */
 
 (function($) {
     var debug = false,
-        animId;
+        animId,
+        supportsNative = 'placeholder' in $('<input>')[0];
+
+    function shouldInitPolyfill(forceApply) {
+        return (supportsNative === false || (supportsNative === true && forceApply === true));
+    }
     function showPlaceholderIfEmpty(input,options) {
         if( input.val() === '' ){
             input.data('placeholder').removeClass(options.hideClass);
@@ -84,6 +89,7 @@
         log('init placeHolder');
         var o = this;
         var l = $(this).length;
+        var closure = this;
         this.options = $.extend({
             className: 'placeholder', // css class that is used to style the placeholder
             visibleToScreenreaders : true, // expose the placeholder text to screenreaders or not
@@ -102,6 +108,11 @@
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
                 label,placeholder,titleNeeded,polyfilled;
+
+            if (shouldInitPolyfill(closure.options.forceApply) === false) {
+                return input;
+            }
+
             if(text === "" || text === undefined) {
               text = input[0].attributes["placeholder"].value;
             }
@@ -123,7 +134,7 @@
                 polyfilled.text(text);
                 return input;
             }
-            
+
             if(label.hasClass(o.options.removeLabelClass)){
                 label.removeClass(o.options.removeLabelClass)
                      .addClass(o.options.hiddenOverrideClass);
@@ -175,14 +186,14 @@
                 $.attrHooks.placeholder = {
                     get: function(elem) {
                         if (elem.nodeName.toLowerCase() === 'input' || elem.nodeName.toLowerCase() === 'textarea') {
-                            if( $(elem).data('placeholder') ){ 
+                            if( $(elem).data('placeholder') ){
                                 // has been polyfilled
                                 return $( $(elem).data('placeholder') ).text();
                             }else{
                                 // native / not yet polyfilled
                                 return $(elem)[0].placeholder;
                             }
-                            
+
                         }else{
                             return undefined;
                         }
@@ -194,7 +205,7 @@
             }
         });
 
-    
+
 
     };
     $(function(){
@@ -203,7 +214,7 @@
             log('placeholder:abort because autoInit is off');
             return;
         }
-        if(('placeholder' in $('<input>')[0] || 'placeHolder' in $('<input>')[0]) && !config.forceApply){ // don't run the polyfill when the browser has native support
+        if(!shouldInitPolyfill(config.forceApply)){ // don't run the polyfill when the browser has native support
             log('placeholder:abort because browser has native support');
             return;
         }
