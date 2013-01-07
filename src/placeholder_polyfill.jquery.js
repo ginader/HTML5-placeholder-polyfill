@@ -102,6 +102,15 @@
                 text = input.attr('placeholder'),
                 id = input.attr('id'),
                 label,placeholder,titleNeeded,polyfilled;
+
+            function onFocusIn() {
+                if(!o.options.hideOnFocus && window.requestAnimationFrame){
+                    startFilledCheckChange(input,o.options);
+                }else{
+                    hidePlaceholder(input,o.options);
+                }
+            }
+
             if(text === "" || text === undefined) {
               text = input[0].attributes["placeholder"].value;
             }
@@ -141,13 +150,7 @@
             placeholder.click(function(){
                 $(this).data('input').focus();
             });
-            input.focusin(function() {
-                if(!o.options.hideOnFocus && window.requestAnimationFrame){
-                    startFilledCheckChange(input,o.options);
-                }else{
-                    hidePlaceholder(input,o.options);
-                }
-            });
+            input.focusin(onFocusIn);
             input.focusout(function(){
                 showPlaceholderIfEmpty($(this),o.options);
                 if(!o.options.hideOnFocus && window.cancelAnimationFrame){
@@ -191,6 +194,10 @@
                         return $( $(elem).data('placeholder') ).text(value);
                     }
                 };
+            }
+
+            if (input.is(":focus")) {
+                onFocusIn();
             }
         });
 
