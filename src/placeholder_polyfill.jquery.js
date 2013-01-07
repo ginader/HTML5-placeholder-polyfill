@@ -16,9 +16,11 @@
 
 (function($) {
     var debug = false,
-        animId;
-    function shouldInitPolyfill() {
-        return !('placeholder' in $('<input>')[0] || ('placeHolder' in $('<input>')[0]) && config.forceApply === true);
+        animId,
+        supportsNative = 'placeholder' in $('<input>')[0];
+
+    function shouldInitPolyfill(forceApply) {
+        return !(supportsNative || (supportsNative && forceApply === true));
     }
     function showPlaceholderIfEmpty(input,options) {
         if( input.val() === '' ){
@@ -87,6 +89,7 @@
         log('init placeHolder');
         var o = this;
         var l = $(this).length;
+        var closure = this;
         this.options = $.extend({
             className: 'placeholder', // css class that is used to style the placeholder
             visibleToScreenreaders : true, // expose the placeholder text to screenreaders or not
@@ -106,7 +109,7 @@
                 id = input.attr('id'),
                 label,placeholder,titleNeeded,polyfilled;
 
-            if (!shouldInitPolyfill()) {
+            if (!shouldInitPolyfill(closure.options.forceApply)) {
                 return input;
             }
 
@@ -211,7 +214,7 @@
             log('placeholder:abort because autoInit is off');
             return;
         }
-        if(!shouldInitPolyfill()){ // don't run the polyfill when the browser has native support
+        if(!shouldInitPolyfill(config.forceApply)){ // don't run the polyfill when the browser has native support
             log('placeholder:abort because browser has native support');
             return;
         }
