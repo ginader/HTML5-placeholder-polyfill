@@ -142,7 +142,7 @@
             }
             positionPlaceholder(placeholder,input);
             input.data('placeholder',placeholder);
-            placeholder.data('input',placeholder);
+            placeholder.data('input',input);
             placeholder.click(function(){
                 $(this).data('input').focus();
             });
