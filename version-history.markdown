@@ -20,3 +20,4 @@ History:
 * 2.0.4 moved to grunt as build tool and restructured the project
 * 2.0.5 added markdown conversion
 * 2.0.6 fix for issue https://github.com/ginader/HTML5-placeholder-polyfill/pull/23 - thanks to christiangeek
+* 2.0.7 fix for issue https://github.com/ginader/HTML5-placeholder-polyfill/pull/44 - thanks to randallb for the report

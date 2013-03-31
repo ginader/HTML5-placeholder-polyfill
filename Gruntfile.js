@@ -16,24 +16,11 @@ module.exports = function(grunt) {
       ' * Licensed under the MIT License: \n' +
       ' * http://www.opensource.org/licenses/mit-license.php \n' +
       ' */',
-    // min: {
-    //   dist: {
-    //     src: ['<banner:meta.banner>','src/placeholder_polyfill.jquery.js'],
-    //     dest: 'dist/placeholder_polyfill.jquery.min.js'
-    //   }
-    // },
     concat: {
       dist: {
-        src: ['libs/onfontresize.jquery.min.js', 'dist/placeholder_polyfill.jquery.min.js'],
+        src: ['libs/jquery.onfontresize.min.js', 'dist/placeholder_polyfill.jquery.min.js'],
         dest: 'dist/placeholder_polyfill.jquery.min.combo.js'
       }
-    },
-    lint: {
-      files: ['grunt.js', 'src/placeholder_polyfill.jquery.js']
-    },
-    watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint'
     },
     jshint: {
       options: {
@@ -45,14 +32,22 @@ module.exports = function(grunt) {
         noarg: true,
         sub: true,
         undef: true,
+        unused: true,
         boss: true,
         eqnull: true,
-        browser: true
+        browser: true,
+        globals: {
+          jQuery: true,
+          requestAnimationFrame: true,
+          cancelAnimationFrame: true
+        }
       },
-      globals: {
-        jQuery: true,
-        requestAnimationFrame: true,
-        cancelAnimationFrame: true
+      files: ['Gruntfile.js', 'src/*.js']
+    },
+    watch: {
+      gruntfile: {
+        files: '<%= jshint.files %>',
+        tasks: ['jshint']
       }
     },
     uglify: {
