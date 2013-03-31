@@ -160,7 +160,7 @@
 
             // optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
             if($.event.special.resize){
-                $("textarea").bind("resize", function(e){
+                $("textarea").bind("resize", function(){
                     positionPlaceholder(placeholder,input);
                 });
             }else{
