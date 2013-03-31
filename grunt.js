@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: '<json:HTML5-placeholder-polyfill.jquery.json>',
+    pkg: grunt.file.readJSON('package.json'),
     meta: {
       banner: '/** \n' +
         ' * <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
@@ -11,14 +11,19 @@ module.exports = function(grunt) {
         ' * web: <%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
         ' * issues: <%= pkg.bugs.url ? "* " + pkg.bugs.url + "\n" : "" %>' +
         ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> \n*/'
+        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> \n*/',
+      fontresizebanner : '/**' +
+        ' * Copyright (c) 2008 Tom Deater (http://www.tomdeater.com)' +
+        ' * Licensed under the MIT License:' +
+        ' * http://www.opensource.org/licenses/mit-license.php' +
+        ' */'
     },
-    min: {
-      dist: {
-        src: ['<banner:meta.banner>','src/placeholder_polyfill.jquery.js'],
-        dest: 'dist/placeholder_polyfill.jquery.min.js'
-      }
-    },
+    // min: {
+    //   dist: {
+    //     src: ['<banner:meta.banner>','src/placeholder_polyfill.jquery.js'],
+    //     dest: 'dist/placeholder_polyfill.jquery.min.js'
+    //   }
+    // },
     concat: {
       dist: {
         src: ['libs/onfontresize.jquery.min.js', 'dist/placeholder_polyfill.jquery.min.js'],
@@ -52,7 +57,15 @@ module.exports = function(grunt) {
         cancelAnimationFrame: true
       }
     },
-    uglify: {},
+    uglify: {
+      options: {
+        banner: '<%= banner %>'
+      },
+      dist: {
+        src: 'src/placeholder_polyfill.jquery.js',
+        dest: 'dist/placeholder_polyfill.jquery.min.js'
+      }
+    },
     markdown: {
       all: {
         files: ['readme.markdown','version-history.markdown'],
@@ -70,8 +83,13 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint min concat markdown');
+  //grunt.registerTask('default', 'lint min concat markdown');
+  grunt.registerTask('default', ['jshint', 'uglify', 'concat', 'markdown']);
 
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-markdown');
 
 };
