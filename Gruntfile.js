@@ -63,18 +63,20 @@ module.exports = function(grunt) {
         }
       }
     },
-    markdown: {
-      all: {
-        files: ['readme.markdown','version-history.markdown'],
-        template: 'web/template.html',
-        dest: 'web',
-        options: {
-          gfm: true,
-          codeLines: {
-            before: '<span>',
-            after: '</span>'
-          }
-        }
+    // markdown: {
+    //   all: {
+    //     files: ['readme.markdown','version-history.markdown'],
+    //     template: 'web/template.html',
+    //     dest: 'web',
+    //     options: {
+    //       gfm: true,
+    //       codeLines: {
+    //         before: '<span>',
+    //         after: '</span>'
+    //       }
+    //     }
+    //   }
+    // },
     watch: {
       gruntfile: {
         files: '<%= jshint.files %>',
@@ -84,7 +86,9 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'concat', 'markdown']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'concat'
+    //, 'markdown'
+  ]);
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
