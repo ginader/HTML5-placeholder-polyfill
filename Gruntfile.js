@@ -4,20 +4,18 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    meta: {
-      banner: '/** \n' +
-        ' * <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        ' * web: <%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        ' * issues: <%= pkg.bugs.url ? "* " + pkg.bugs.url + "\n" : "" %>' +
-        ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> \n*/',
-      fontresizebanner : '/**' +
-        ' * Copyright (c) 2008 Tom Deater (http://www.tomdeater.com)' +
-        ' * Licensed under the MIT License:' +
-        ' * http://www.opensource.org/licenses/mit-license.php' +
-        ' */'
-    },
+    banner: '/** \n' +
+      ' * <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+      '<%= grunt.template.today("yyyy-mm-dd") %> \n' +
+      ' * web: <%= pkg.homepage %> \n' +
+      ' * issues: <%= pkg.bugs.url %> \n' +
+      ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> \n */\n',
+    fontresizebanner : '/**' +
+      ' * Copyright (c) 2008 Tom Deater (http://www.tomdeater.com) \n' +
+      ' * Licensed under the MIT License: \n' +
+      ' * http://www.opensource.org/licenses/mit-license.php \n' +
+      ' */',
     // min: {
     //   dist: {
     //     src: ['<banner:meta.banner>','src/placeholder_polyfill.jquery.js'],
