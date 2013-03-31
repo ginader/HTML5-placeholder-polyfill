@@ -64,6 +64,16 @@ module.exports = function(grunt) {
         dest: 'dist/placeholder_polyfill.jquery.min.js'
       }
     },
+    cssmin: {
+      compress: {
+        options: {
+          banner: '<%= banner %>'
+        },
+        files: {
+          'dist/placeholder_polyfill.min.css': ['src/placeholder_polyfill.css']
+        }
+      }
+    },
     markdown: {
       all: {
         files: ['readme.markdown','version-history.markdown'],
@@ -81,11 +91,11 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  //grunt.registerTask('default', 'lint min concat markdown');
-  grunt.registerTask('default', ['jshint', 'uglify', 'concat', 'markdown']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'concat', 'markdown']);
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-markdown');
