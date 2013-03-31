@@ -34,7 +34,6 @@
 
         // Determine if we need to shift the header down more.
         var offset = input.offset();
-        
         if (pt) {
             offset.top += pt;
         }
@@ -128,7 +127,6 @@
                 polyfilled.text(text);
                 return input;
             }
-            
             if(label.hasClass(o.options.removeLabelClass)){
                 label.removeClass(o.options.removeLabelClass)
                      .addClass(o.options.hiddenOverrideClass);
@@ -174,14 +172,13 @@
                 $.attrHooks.placeholder = {
                     get: function(elem) {
                         if (elem.nodeName.toLowerCase() === 'input' || elem.nodeName.toLowerCase() === 'textarea') {
-                            if( $(elem).data('placeholder') ){ 
+                            if( $(elem).data('placeholder') ){
                                 // has been polyfilled
                                 return $( $(elem).data('placeholder') ).text();
                             }else{
                                 // native / not yet polyfilled
                                 return $(elem)[0].placeholder;
                             }
-                            
                         }else{
                             return undefined;
                         }
@@ -197,7 +194,7 @@
             }
         });
 
-    
+
 
     };
     $(function(){
