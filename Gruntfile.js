@@ -44,12 +44,6 @@ module.exports = function(grunt) {
       },
       files: ['Gruntfile.js', 'src/*.js']
     },
-    watch: {
-      gruntfile: {
-        files: '<%= jshint.files %>',
-        tasks: ['jshint']
-      }
-    },
     uglify: {
       options: {
         banner: '<%= banner %>'
@@ -81,6 +75,10 @@ module.exports = function(grunt) {
             after: '</span>'
           }
         }
+    watch: {
+      gruntfile: {
+        files: '<%= jshint.files %>',
+        tasks: ['jshint']
       }
     }
   });
