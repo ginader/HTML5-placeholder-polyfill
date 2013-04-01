@@ -119,3 +119,8 @@ Please bear in mind that every input needs a linked label in order for the plugi
     	</script> 
 		<script src="placeholder_polyfill.jquery.min.combo.js" charset="utf-8"></script>
 	</head>	
+
+VERSION HISTORY
+---------------
+
+[See the complete Version History here](http://blog.ginader.de/dev/jquery/HTML5-placeholder-polyfill/web/version-history.html)
