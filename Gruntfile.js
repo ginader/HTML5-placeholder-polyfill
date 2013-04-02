@@ -11,11 +11,6 @@ module.exports = function(grunt) {
       ' * issues: <%= pkg.bugs.url %> \n' +
       ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> \n */\n',
-    fontresizebanner : '/**' +
-      ' * Copyright (c) 2008 Tom Deater (http://www.tomdeater.com) \n' +
-      ' * Licensed under the MIT License: \n' +
-      ' * http://www.opensource.org/licenses/mit-license.php \n' +
-      ' */',
     concat: {
       dist: {
         src: ['libs/jquery.onfontresize.min.js', 'dist/placeholder_polyfill.jquery.min.js'],
