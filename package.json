@@ -1,5 +1,5 @@
 {
-  "name": "HTML5-placeholder-polyfill",
+  "name": "html5-placeholder-polyfill",
   "title": "Html5 Placeholder Polyfill",
   "description": "Lightweight and very robust little jQuery plugin that generates the look and feel of the HTML5 placeholder attribute for browsers without native support",
   "version": "2.0.7",
