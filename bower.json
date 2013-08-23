@@ -1,8 +1,38 @@
 {
-  "name": "html5-placeholder-polyfill",
-  "version": "2.0.7",
-  "main": "['/dist/placeholder_polyfill.jquery.min.combo.js','/dist/placeholder_polyfill.min.css']",
-  "dependencies": {
-    "jquery": ">=1.8"
-  }
+	"name": "html5-placeholder-polyfill",
+	"version": "2.0.8",
+	"title": "HTML5 placeholder Polyfill",
+	"description": "Lightweight and very robust little jQuery plugin that generates the look and feel of the HTML5 placeholder attribute for browsers without native support.",
+	"keywords": [
+		"jquery",
+		"html5",
+		"placeholder",
+		"polyfill"
+	],
+	"homepage": "https://github.com/ginader/HTML5-placeholder-polyfill",
+	"author": {
+		"name": "Dirk Ginader",
+		"url": "http://ginader.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:ginader/HTML5-placeholder-polyfill.git"
+	},
+	"bugs": "https://github.com/ginader/HTML5-placeholder-polyfill/issues",
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/MIT"
+		},
+		{
+			"type": "GPL",
+			"url": "http://www.gnu.org/licenses/gpl.html"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.8"
+	},
+	"main": [
+		"/dist/placeholder_polyfill.jquery.min.combo.js", "/dist/placeholder_polyfill.min.css"
+	]
 }

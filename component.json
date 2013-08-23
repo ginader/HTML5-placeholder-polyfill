@@ -1,6 +1,6 @@
 {
   "name": "HTML5-placeholder-polyfill",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "main": "['/dist/placeholder_polyfill.jquery.min.combo.js','/dist/placeholder_polyfill.min.css']",
   "dependencies": {
     "jquery": "<=1.8"
