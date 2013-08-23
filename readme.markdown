@@ -53,6 +53,15 @@ The placeholder attribute has decent support across current Browsers. This scrip
 
 For more details on native support see the browser suppport table at [caniuse.com](http://caniuse.com/#search=placeholder).
 
+Installation
+------------
+
+You can install HTML5 placeholder Polyfill by using [Bower](http://bower.io).
+
+```bash
+bower install html5-placeholder-polyfill
+```
+
 USAGE:
 ------
 
