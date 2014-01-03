@@ -158,8 +158,12 @@
 
             // optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
             if($.event.special.resize){
-                $("textarea").bind("resize", function(){
-                    positionPlaceholder(placeholder,input);
+                $("textarea").bind("resize", function(event){
+					if ($(this).is(":visible")) {
+						positionPlaceholder(placeholder,input);
+					}
+					event.stopPropagation();
+					event.preventDefault();
                 });
             }else{
                 // we simply disable the resizeablilty of textareas when we can't react on them resizing
