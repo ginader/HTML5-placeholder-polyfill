@@ -1,7 +1,7 @@
 /**
 * HTML5 placeholder polyfill
 * @requires jQuery - tested with 1.6.2 but might as well work with older versions
-* 
+*
 * code: https://github.com/ginader/HTML5-placeholder-polyfill
 * please report issues at: https://github.com/ginader/HTML5-placeholder-polyfill/issues
 *
@@ -9,7 +9,7 @@
 * Dual licensed under the MIT and GPL licenses:
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
-* 
+*
 */
 
 (function($) {
@@ -65,7 +65,9 @@
         }());
     }
     function stopCheckChange(){
-        cancelAnimationFrame(animId);
+        if (window.cancelAnimationFrame) {
+          cancelAnimationFrame(animId);
+        }
     }
     function log(msg){
         if(debug && window.console && window.console.log){
@@ -145,7 +147,7 @@
             input.focusin(onFocusIn);
             input.focusout(function(){
                 showPlaceholderIfEmpty($(this),o.options);
-                if(!o.options.hideOnFocus && window.cancelAnimationFrame){
+                if(!o.options.hideOnFocus){
                     stopCheckChange();
                 }
             });
