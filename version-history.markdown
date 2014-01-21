@@ -21,3 +21,5 @@ History:
 * 2.0.5 added markdown conversion
 * 2.0.6 fix for issue https://github.com/ginader/HTML5-placeholder-polyfill/pull/23 - thanks to christiangeek
 * 2.0.7 fix for issue https://github.com/ginader/HTML5-placeholder-polyfill/pull/44 - thanks to randallb for the report
+* 2.0.8 added Bower config
+* 2.0.9 fix for issue https://github.com/ginader/HTML5-placeholder-polyfill/pull/58 - thanks to 58 for the commit
