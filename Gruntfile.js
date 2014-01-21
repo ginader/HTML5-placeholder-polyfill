@@ -59,6 +59,15 @@ module.exports = function(grunt) {
       }
     },
     markdown: {
+      options: {
+        template: 'web/template.html',
+        markdownOptions: {
+          codeLines: {
+            before: '<span>',
+            after: '</span>'
+          }
+        }
+      },
       all: {
         files: [
           {
