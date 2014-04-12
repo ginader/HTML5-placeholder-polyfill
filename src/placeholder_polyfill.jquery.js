@@ -21,9 +21,8 @@
 */
 
 /* globals requestAnimationFrame, cancelAnimationFrame */
-'use strict';
-
 (function($) {
+    'use strict';
     var debug = false,
         animId;
     function showPlaceholderIfEmpty(input,options) {
