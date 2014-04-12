@@ -12,14 +12,6 @@
 *
 */
 
-/**
-* Notice: This version is modified by Rockallite @2014-04-12 in order to:
-*   * Reduce changes to placeholder's CSS when input is focused
-*   * Provide the ability to change debug flag via placeHolderConfig
-*   * Elminate JSHint warnings
-*
-*/
-
 /* globals requestAnimationFrame, cancelAnimationFrame */
 (function($) {
     'use strict';
