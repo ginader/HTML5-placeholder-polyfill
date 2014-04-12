@@ -12,18 +12,36 @@
 *
 */
 
+/**
+* Notice: This version is modified by Rockallite @2014-04-12 in order to:
+*   * Reduce changes to placeholder's CSS when input is focused
+*   * Provide the ability to change debug flag via placeHolderConfig
+*   * Elminate JSHint warnings
+*
+*/
+
+/* globals requestAnimationFrame, cancelAnimationFrame */
+'use strict';
+
 (function($) {
     var debug = false,
         animId;
     function showPlaceholderIfEmpty(input,options) {
         if( input.val() === '' ){
+            log('placeholder is shown by showPlaceholderIfEmpty()');
             input.data('placeholder').removeClass(options.hideClass);
         }else{
+            log('placeholder is hidden by showPlaceholderIfEmpty()');
             input.data('placeholder').addClass(options.hideClass);
         }
     }
     function hidePlaceholder(input,options){
+        log('placeholder is hidden by hidePlaceholder()');
         input.data('placeholder').addClass(options.hideClass);
+    }
+    function showPlaceholder(input,options){
+        log('placeholder is shown by showPlaceholder()');
+        input.data('placeholder').removeClass(options.hideClass);
     }
     function positionPlaceholder(placeholder,input){
         var ta  = input.is('textarea');
@@ -48,10 +66,9 @@
         }).offset(offset);
     }
     function startFilledCheckChange(input,options){
-        var val = input.val();
         (function checkloop(){
             animId = requestAnimationFrame(checkloop);
-            if(input.val() !== val){
+            if(input.val()){
                 hidePlaceholder(input,options);
                 stopCheckChange();
                 startEmptiedCheckChange(input,options);
@@ -61,12 +78,16 @@
     function startEmptiedCheckChange(input,options){
         (function checkloop(){
             animId = requestAnimationFrame(checkloop);
-            showPlaceholderIfEmpty(input,options);
+            if(!input.val()){
+                showPlaceholder(input,options);
+                stopCheckChange();
+                startFilledCheckChange(input,options);
+            }
         }());
     }
     function stopCheckChange(){
         if (window.cancelAnimationFrame) {
-          cancelAnimationFrame(animId);
+            cancelAnimationFrame(animId);
         }
     }
     function log(msg){
@@ -79,6 +100,7 @@
         log('init placeHolder');
         var o = this;
         var l = $(this).length;
+        debug = config.debug || false;  // set debug flag
         this.options = $.extend({
             className: 'placeholder', // css class that is used to style the placeholder
             visibleToScreenreaders : true, // expose the placeholder text to screenreaders or not
@@ -106,8 +128,8 @@
                 }
             }
 
-            if(text === "" || text === undefined) {
-              text = input[0].attributes["placeholder"].value;
+            if(text === '' || text === undefined) {
+                text = input[0].attributes.placeholder.value;
             }
             label = input.closest('label');
             input.removeAttr('placeholder');
@@ -146,30 +168,31 @@
             });
             input.focusin(onFocusIn);
             input.focusout(function(){
-                showPlaceholderIfEmpty($(this),o.options);
-                if(!o.options.hideOnFocus){
+                if(o.options.hideOnFocus){
+                    showPlaceholderIfEmpty($(this),o.options);
+                } else {
                     stopCheckChange();
                 }
             });
             showPlaceholderIfEmpty(input,o.options);
 
             // reformat on window resize and optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
-            $(document).bind("fontresize resize", function(){
+            $(document).bind('fontresize resize', function(){
                 positionPlaceholder(placeholder,input);
             });
 
             // optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
             if($.event.special.resize){
-                $("textarea").bind("resize", function(event){
-					if ($(this).is(":visible")) {
-						positionPlaceholder(placeholder,input);
-					}
-					event.stopPropagation();
-					event.preventDefault();
+                $('textarea').bind('resize', function(event){
+                    if ($(this).is(':visible')) {
+                        positionPlaceholder(placeholder,input);
+                    }
+                    event.stopPropagation();
+                    event.preventDefault();
                 });
             }else{
                 // we simply disable the resizeablilty of textareas when we can't react on them resizing
-                $("textarea").css('resize','none');
+                $('textarea').css('resize','none');
             }
 
             if(index >= l-1 && typeof $.attrHooks !== 'undefined'){
@@ -193,7 +216,7 @@
                 };
             }
 
-            if (input.is(":focus")) {
+            if (input.is(':focus')) {
                 onFocusIn();
             }
         });
