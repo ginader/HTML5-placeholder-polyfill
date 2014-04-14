@@ -79,6 +79,7 @@
         log('init placeHolder');
         var o = this;
         var l = $(this).length;
+        debug = config.debug || false;  // set debug flag
         this.options = $.extend({
             className: 'placeholder', // css class that is used to style the placeholder
             visibleToScreenreaders : true, // expose the placeholder text to screenreaders or not
