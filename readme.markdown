@@ -104,6 +104,8 @@ Please bear in mind that every input needs a linked label in order for the plugi
 		<link rel="stylesheet" href="placeholder_polyfill.min.css">
 		<script>
     	placeHolderConfig = {
+            // set to true for debug logging in console
+                debug: false,
     		// css class that is used to style the placeholder
             	className: 'placeholder', 
             // expose the placeholder text to screenreaders or not
