@@ -12,7 +12,9 @@
 *
 */
 
+/* globals requestAnimationFrame, cancelAnimationFrame */
 (function($) {
+    'use strict';
     var debug = false,
         animId;
     function showPlaceholderIfEmpty(input,options) {
@@ -66,7 +68,7 @@
     }
     function stopCheckChange(){
         if (window.cancelAnimationFrame) {
-          cancelAnimationFrame(animId);
+            cancelAnimationFrame(animId);
         }
     }
     function log(msg){
@@ -106,8 +108,8 @@
                 }
             }
 
-            if(text === "" || text === undefined) {
-              text = input[0].attributes["placeholder"].value;
+            if(text === '' || text === undefined) {
+                text = input[0].attributes.placeholder.value;
             }
             label = input.closest('label');
             input.removeAttr('placeholder');
@@ -154,22 +156,22 @@
             showPlaceholderIfEmpty(input,o.options);
 
             // reformat on window resize and optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
-            $(document).bind("fontresize resize", function(){
+            $(document).bind('fontresize resize', function(){
                 positionPlaceholder(placeholder,input);
             });
 
             // optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
             if($.event.special.resize){
-                $("textarea").bind("resize", function(event){
-					if ($(this).is(":visible")) {
-						positionPlaceholder(placeholder,input);
-					}
-					event.stopPropagation();
-					event.preventDefault();
+                $('textarea').bind('resize', function(event){
+                    if ($(this).is(':visible')) {
+                        positionPlaceholder(placeholder,input);
+                    }
+                    event.stopPropagation();
+                    event.preventDefault();
                 });
             }else{
                 // we simply disable the resizeablilty of textareas when we can't react on them resizing
-                $("textarea").css('resize','none');
+                $('textarea').css('resize','none');
             }
 
             if(index >= l-1 && typeof $.attrHooks !== 'undefined'){
@@ -193,7 +195,7 @@
                 };
             }
 
-            if (input.is(":focus")) {
+            if (input.is(':focus')) {
                 onFocusIn();
             }
         });
