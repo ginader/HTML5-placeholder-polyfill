@@ -17,13 +17,20 @@
         animId;
     function showPlaceholderIfEmpty(input,options) {
         if( input.val() === '' ){
+            log('placeholder is shown by showPlaceholderIfEmpty()');
             input.data('placeholder').removeClass(options.hideClass);
         }else{
+            log('placeholder is hidden by showPlaceholderIfEmpty()');
             input.data('placeholder').addClass(options.hideClass);
         }
     }
     function hidePlaceholder(input,options){
+        log('placeholder is hidden by hidePlaceholder()');
         input.data('placeholder').addClass(options.hideClass);
+    }
+    function showPlaceholder(input,options){
+        log('placeholder is shown by showPlaceholder()');
+        input.data('placeholder').removeClass(options.hideClass);
     }
     function positionPlaceholder(placeholder,input){
         var ta  = input.is('textarea');
@@ -48,10 +55,9 @@
         }).offset(offset);
     }
     function startFilledCheckChange(input,options){
-        var val = input.val();
         (function checkloop(){
             animId = requestAnimationFrame(checkloop);
-            if(input.val() !== val){
+            if(input.val()){
                 hidePlaceholder(input,options);
                 stopCheckChange();
                 startEmptiedCheckChange(input,options);
@@ -61,7 +67,11 @@
     function startEmptiedCheckChange(input,options){
         (function checkloop(){
             animId = requestAnimationFrame(checkloop);
-            showPlaceholderIfEmpty(input,options);
+            if(!input.val()){
+                showPlaceholder(input,options);
+                stopCheckChange();
+                startFilledCheckChange(input,options);
+            }
         }());
     }
     function stopCheckChange(){
@@ -146,8 +156,9 @@
             });
             input.focusin(onFocusIn);
             input.focusout(function(){
-                showPlaceholderIfEmpty($(this),o.options);
-                if(!o.options.hideOnFocus){
+                if(o.options.hideOnFocus){
+                    showPlaceholderIfEmpty($(this),o.options);
+                } else {
                     stopCheckChange();
                 }
             });
