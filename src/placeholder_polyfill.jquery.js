@@ -120,7 +120,7 @@
                 log('the input element with the placeholder needs a label!');
                 return;
             }
-            polyfilled = $(label).find('.placeholder');
+            polyfilled = $(label).find('.' + o.options.className);
             if(polyfilled.length) {
                 //log('the input element already has a polyfilled placeholder!');
                 positionPlaceholder(polyfilled,input);
