@@ -90,7 +90,7 @@
             forceHiddenOverride : true, // allow the replace of the removeLabelClass with hiddenOverrideClass or not
             forceApply : false, // apply the polyfill even for browser with native support
             autoInit : true // init automatically or not
-        }, config);
+        }, config || window.placeHolderConfig);
         this.options.hideClass = this.options.visibleToScreenreaders ? this.options.visibleToScreenreadersHideClass : this.options.visibleToNoneHideClass;
         return $(this).each(function(index) {
             var input = $(this),
@@ -211,6 +211,6 @@
             log('placeholder:abort because browser has native support');
             return;
         }
-        $('input[placeholder], textarea[placeholder]').placeHolder(config);
+        $('input[placeholder], textarea[placeholder]').placeHolder();
     });
 }(jQuery));
