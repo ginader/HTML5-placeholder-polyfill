@@ -107,7 +107,7 @@
             }
 
             if(text === "" || text === undefined) {
-              text = input[0].attributes["placeholder"].value;
+              text = input[0].attributes["placeholder"] ? input[0].attributes["placeholder"].value : "";
             }
             label = input.closest('label');
             input.removeAttr('placeholder');
