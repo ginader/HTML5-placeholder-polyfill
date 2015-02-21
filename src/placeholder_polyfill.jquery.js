@@ -151,6 +151,9 @@
                     stopCheckChange();
                 }
             });
+            input.change(function(){
+                showPlaceholderIfEmpty($(this),o.options);
+            });
             showPlaceholderIfEmpty(input,o.options);
 
             // reformat on window resize and optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
