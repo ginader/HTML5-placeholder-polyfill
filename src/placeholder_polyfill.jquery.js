@@ -155,9 +155,11 @@
                 showPlaceholderIfEmpty($(this),o.options);
             });
             showPlaceholderIfEmpty(input,o.options);
-
-            // reformat on window resize and optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
-            $(window).bind("fontresize resize", function(){
+            $(window).bind("resize", function(){
+                positionPlaceholder(placeholder,input);
+            });
+            //optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
+            $(document).bind("fontresize", function(){
                 positionPlaceholder(placeholder,input);
             });
 
