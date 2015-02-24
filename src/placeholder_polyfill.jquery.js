@@ -27,25 +27,24 @@
     }
     function positionPlaceholder(placeholder,input){
         var ta  = input.is('textarea');
-        var pt = parseFloat(input.css('padding-top'));
-        var pl = parseFloat(input.css('padding-left'));
-
-        // Determine if we need to shift the header down more.
-        var offset = input.offset();
-        if (pt) {
-            offset.top += pt;
-        }
-        if (pl) {
-            offset.left += pl;
-        }
 
         placeholder.css({
             width : input.innerWidth()-(ta ? 20 : 4),
-            height : input.innerHeight()-6,
             lineHeight : input.css('line-height'),
             whiteSpace : ta ? 'normal' : 'nowrap',
             overflow : 'hidden'
-        }).offset(offset);
+        })
+
+        var top = parseInt((input.outerHeight() / 2) - (placeholder.outerHeight() / 2));
+        var left = parseFloat(input.css('padding-left'));
+        var offset = input.offset();
+        if (top) {
+            offset.top += top;
+        }
+        if (left) {
+            offset.left += left;
+        }
+        placeholder.offset(offset);
     }
     function startFilledCheckChange(input,options){
         var val = input.val();
@@ -157,18 +156,18 @@
             showPlaceholderIfEmpty(input,o.options);
 
             // reformat on window resize and optional reformat on font resize - requires: http://www.tomdeater.com/jquery/onfontresize/
-            $(document).bind("fontresize resize", function(){
+            $(window).bind("fontresize resize", function(){
                 positionPlaceholder(placeholder,input);
             });
 
             // optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
             if($.event.special.resize){
                 $("textarea").bind("resize", function(event){
-					if ($(this).is(":visible")) {
-						positionPlaceholder(placeholder,input);
-					}
-					event.stopPropagation();
-					event.preventDefault();
+                    if ($(this).is(":visible")) {
+                        positionPlaceholder(placeholder,input);
+                    }
+                    event.stopPropagation();
+                    event.preventDefault();
                 });
             }else{
                 // we simply disable the resizeablilty of textareas when we can't react on them resizing
