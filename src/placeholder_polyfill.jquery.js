@@ -30,6 +30,7 @@
 
         placeholder.css({
             width : input.innerWidth()-(ta ? 20 : 4),
+            height : ta ? input.innerHeight() - 6 : 'auto',
             lineHeight : input.css('line-height'),
             whiteSpace : ta ? 'normal' : 'nowrap',
             overflow : 'hidden'
