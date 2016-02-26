@@ -23,3 +23,4 @@ History:
 * 2.0.7 fix for issue https://github.com/ginader/HTML5-placeholder-polyfill/pull/44 - thanks to randallb for the report
 * 2.0.8 added Bower config
 * 2.0.9 fix for issue https://github.com/ginader/HTML5-placeholder-polyfill/pull/58 - thanks to samuelcole for the commit
+* 2.1 added support for :placeholder-shown https://github.com/ginader/HTML5-placeholder-polyfill/issues/71 - thanks to corysimmons for the suggestion

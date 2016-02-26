@@ -1,8 +1,8 @@
 HTML5 placeholder Polyfill
 ==========================
 
-Lightweight and very robust little jQuery plugin that generates the look and feel of the HTML5 placeholder attribute for browsers without native support. It also adds an extra title in case the placeholder text is too long to be displayed. 
-The polyfill comes with an option to define if the placeholder text should be read to screenreaders or not (on by default). New in version 1.9 is the option to make it behave like Chrome or mobile Safari (hide placeholder when the users enters content rather than when the fields receives focus).
+Lightweight and very robust little jQuery plugin that generates the look and feel of the HTML5 placeholder attribute for browsers without native support. It also adds an extra title in case the placeholder text is too long to be displayed.
+The polyfill comes with an option to define if the placeholder text should be read to screenreaders or not (on by default). Since version 1.9 the default option is to make it behave like Chrome or mobile Safari (hide placeholder when the users enters content rather than when the fields receives focus).
 
 Demos:
 ------
@@ -27,13 +27,13 @@ Dependencies:
 
 * [fontresize](https://github.com/johnantoni/jquery.onfontresize) (excellent even though terribly unmaintained event plugin that fires when a user changes the font size of their browser (that usually breaks the other placeholder polyfills))
 
-### Optional 
+### Optional
 
 #### Required if hiding the placeholder when user types instead of onfocus (like Chrome or mobile Safari) {hideOnFocus : false}
 
 * [requestAnimationFrame polyfill](https://gist.github.com/1579671) better than a simple timeout loop as browsers can slow the loop down when it's not the active window
 
-### Highly optional 
+### Highly optional
 
 #### only needed if you want users to be able to resize textareas:
 
@@ -105,29 +105,52 @@ Please bear in mind that every input needs a linked label in order for the plugi
 		<script>
     	placeHolderConfig = {
     		// css class that is used to style the placeholder
-            	className: 'placeholder', 
+            	className: 'placeholder',
             // expose the placeholder text to screenreaders or not
 	            visibleToScreenreaders : true,
 	        // css class is used to visually hide the placeholder
-		        visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader', 
+		        visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader',
 		    // css class used to hide the placeholder for all
 	            visibleToNoneHideClass : 'placeholder-hide',
             // either hide the placeholder on focus or on type
-	            hideOnFocus : false, 
+	            hideOnFocus : false,
             // remove this class from a label (to fix hidden labels)
-	            removeLabelClass : 'visuallyhidden', 
+	            removeLabelClass : 'visuallyhidden',
 	        // replace the label above with this class
-	            hiddenOverrideClass : 'visuallyhidden-with-placeholder', 
+	            hiddenOverrideClass : 'visuallyhidden-with-placeholder',
             // allow the replace of the removeLabelClass with hiddenOverrideClass or not
-	            forceHiddenOverride : true, 
+	            forceHiddenOverride : true,
             // apply the polyfill even for browser with native support
-	            forceApply : false, 
+	            forceApply : false,
             // init automatically or not
-            	autoInit : true 
+            	autoInit : true
     	}
-    	</script> 
+    	</script>
 		<script src="placeholder_polyfill.jquery.min.combo.js" charset="utf-8"></script>
-	</head>	
+	</head>
+
+### Customizing the styling (optional)
+	<head>
+		<style>
+			/* Example how to style the placeholder itself */
+			::-webkit-input-placeholder, /* Chrome/Opera/Safari */
+			::-moz-placeholder, /* Firefox 19+ */
+			:-ms-input-placeholder, /* IE 10+ */
+			:-moz-placeholder, /* Firefox 18- */
+			::placeholder, /* standard */
+			label .placeholder  /* this polyfill */
+			{
+			    color:red; /* your awesome style for the the placeholder text */
+			}
+
+			/* Example how to style the :placeholder-shown pseudo class so it works with this polyfill: */
+			input:placeholder-shown,
+			input.placeholder-shown  /* just duplicate the selector and change the :peudo selector to a .class selector */
+			{
+			    border: 2px solid red /* your awesome style for the input element when the placeholder is visible */
+			}
+		</style>
+	</head>
 
 VERSION HISTORY
 ---------------

@@ -30,3 +30,21 @@ label.visuallyhidden-with-placeholder{
     position:absolute !important;
     left:-999em;
 }
+
+/* Example how to style the placeholder itself */
+::-webkit-input-placeholder, /* Chrome/Opera/Safari */
+::-moz-placeholder, /* Firefox 19+ */
+:-ms-input-placeholder, /* IE 10+ */
+:-moz-placeholder, /* Firefox 18- */
+::placeholder, /* standard */
+label .placeholder  /* this polyfill */
+{
+    /* your awesome style for the the placeholder text */
+}
+
+/* Example how to style the :placeholder-shown pseudo class so it works with this polyfill: */
+input:placeholder-shown,
+input.placeholder-shown  /* just duplicate the selector and change the :peudo selector to a .class selector */
+{
+    /* your awesome style for the input element when the placeholder is visible */
+}

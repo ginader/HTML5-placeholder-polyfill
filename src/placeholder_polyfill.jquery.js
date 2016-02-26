@@ -5,7 +5,7 @@
 * code: https://github.com/ginader/HTML5-placeholder-polyfill
 * please report issues at: https://github.com/ginader/HTML5-placeholder-polyfill/issues
 *
-* Copyright (c) 2012 Dirk Ginader (ginader.de)
+* Copyright (c) 2016 Dirk Ginader (ginader.de)
 * Dual licensed under the MIT and GPL licenses:
 * http://www.opensource.org/licenses/mit-license.php
 * http://www.gnu.org/licenses/gpl.html
@@ -18,12 +18,15 @@
     function showPlaceholderIfEmpty(input,options) {
         if( input.val() === '' ){
             input.data('placeholder').removeClass(options.hideClass);
+            input.addClass(options.placeholderShownClass);
         }else{
             input.data('placeholder').addClass(options.hideClass);
+            input.removeClass(options.placeholderShownClass);
         }
     }
     function hidePlaceholder(input,options){
         input.data('placeholder').addClass(options.hideClass);
+        input.removeClass(options.placeholderShownClass);
     }
     function positionPlaceholder(placeholder,input){
         var ta  = input.is('textarea');
@@ -81,6 +84,7 @@
         var l = $(this).length;
         this.options = $.extend({
             className: 'placeholder', // css class that is used to style the placeholder
+            placeholderShownClass: 'placeholder-shown', // css class that is applied to a form field when its Placeholder is visible (polyfill for :placeholder-shown pseudo selector: https://www.w3.org/TR/selectors4/#placeholder-shown-pseudo)
             visibleToScreenreaders : true, // expose the placeholder text to screenreaders or not
             visibleToScreenreadersHideClass : 'placeholder-hide-except-screenreader', // css class is used to visually hide the placeholder
             visibleToNoneHideClass : 'placeholder-hide', // css class used to hide the placeholder for all
