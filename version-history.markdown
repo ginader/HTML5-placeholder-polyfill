@@ -4,7 +4,7 @@ History:
 * 1.1 added support for multiline placeholders in textareas
 * 1.2 Allow label to wrap the input element by noah https://github.com/ginader/HTML5-placeholder-polyfill/pull/1
 * 1.3 New option to read placeholder to Screenreaders. Turned on by default
-* 1.4 made placeholder more rubust to allow labels being offscreen + added minified version of the 3rd party libs
+* 1.4 made placeholder more robust to allow labels being offscreen + added minified version of the 3rd party libs
 * 1.5 emptying the native placeholder to prevent double rendering in Browsers with partial support
 * 1.6 optional reformat when a textarea is being resized - requires http://benalman.com/projects/jquery-resize-plugin/
 * 1.7 feature detection is now included in the polyfill so you can simply include it without the need for Modernizr
