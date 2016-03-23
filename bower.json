@@ -33,6 +33,6 @@
 		"jquery": ">=1.8"
 	},
 	"main": [
-		"/dist/placeholder_polyfill.jquery.min.combo.js", "/dist/placeholder_polyfill.min.css"
+		"./dist/placeholder_polyfill.jquery.min.combo.js", "./dist/placeholder_polyfill.min.css"
 	]
 }
