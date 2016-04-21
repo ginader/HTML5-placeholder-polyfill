@@ -82,6 +82,7 @@
         log('init placeHolder');
         var o = this;
         var l = $(this).length;
+        debug = config.debug || false;  // set debug flag
         this.options = $.extend({
             className: 'placeholder', // css class that is used to style the placeholder
             placeholderShownClass: 'placeholder-shown', // css class that is applied to a form field when its Placeholder is visible (polyfill for :placeholder-shown pseudo selector: https://www.w3.org/TR/selectors4/#placeholder-shown-pseudo)
